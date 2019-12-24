@@ -1,0 +1,40 @@
+.bootstrap-tagsinput {
+  border-radius: 0px !important;
+}
+
+.bootstrap-tagsinput input {
+  padding: 4px 6px !important;
+}
+
+.table-condensed {
+  cursor: default !important;
+}
+
+.table>thead>tr>th {
+  font-weight: bold;
+}
+
+.borderless td {
+  border-top: none !important;
+}
+
+.borderless tr {
+  text-align: center !important;
+}
+
+.borderless tr.own-others {
+  font-weight: bold !important;
+}
+
+.borderless {
+  background-color: transparent !important;
+}
+
+.borderless>thead>tr>th {
+  text-align: center !important;
+  border-top: none !important;
+}
+
+.borderless tbody tr td:first-child {
+  font-weight: 600;
+}

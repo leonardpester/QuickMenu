@@ -1,0 +1,30 @@
+div.datedropper.date_filter .pick-m, div.datedropper.date_filter:before, div.datedropper.date_filter .pick-lg-h {
+  background-color: #EB5E28;
+}
+
+/*.call-info h4, .call-info h5{
+  text-align: center;
+}*/
+
+.call-info label {
+  text-align: center !important;
+}
+
+.picker ul.pick-d {
+  display: none !important;
+}
+#reportRange {
+  height: 40px !important;
+  overflow: hidden;
+}
+.tooltip-inner {
+  width: 100%; 
+}
+
+td::before {
+  margin-top: -4px !important;
+  margin-left: -5px;
+}
+i.fa.fa-info-circle.text-info {
+  font-size: 17px;
+}

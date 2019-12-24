@@ -1,0 +1,38 @@
+.main-panel {
+    padding-top: 10%;
+    background-size: cover;
+    background-image: url('../img/background.jpg');
+    /* background-image: url(https://source.unsplash.com//photos/random?collections=3832127&client_id=de237dab80f7478c02c0419d2a5c7e92d7680b7be43ef527d69491ff69200738); */
+}
+.navbar,
+footer {
+    display: none;
+}
+.dropdown-menu:before,
+.dropdown-menu:after {
+    right: 5px;
+    top: -11px;
+    border-bottom: 11px solid rgba(33, 33, 32, 0.84);
+}
+
+.bootstrap-select.btn-group .dropdown-menu.inner {
+    background-color: transparent;
+}
+
+.dropdown-menu {
+    margin-top: 10px;
+    background-color: rgba(33, 33, 32, 0.84) !important;
+}
+
+.btn-group.open .dropdown-toggle {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.bootstrap-select.btn-group .dropdown-menu.inner {
+    border-radius: 5px;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: rgba(26, 128, 189, 0.4);
+}

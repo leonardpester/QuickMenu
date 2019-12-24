@@ -1,0 +1,44 @@
+
+html,body { height: 100%; margin: 0px; padding: 0px; }
+
+body {
+
+  font-size: 13px;
+
+}
+
+
+.page-header{
+  margin-top:0px;
+}
+
+.form-group.required label:after {
+  content:" (*)";
+  color:red;
+}
+
+.logo text span{
+    color:#EA1A00;
+}
+.logo text
+{
+    color: blue;
+    font-weight: bold;
+}
+
+.dropdown-item{
+    color:black !important;
+}
+
+.login-wraper
+{
+    position:absolute;
+    width:100%;
+    height:100%;
+
+}
+
+table tbody td {
+    vertical-align: top;
+    word-break:break-all;
+}

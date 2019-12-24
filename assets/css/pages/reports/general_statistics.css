@@ -1,0 +1,7 @@
+.pick-d {
+    display: none !important;
+}
+#reportRange {
+    height: 40px !important;
+    overflow: hidden;
+}

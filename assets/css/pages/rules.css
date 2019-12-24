@@ -1,0 +1,12 @@
+.add-item .form-control {
+  border-bottom: 1.5px solid #000 !important;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: transparent !important;
+}
+
+.btn-space {
+  margin-left: 2px; 
+  margin-right: 2px; 
+}

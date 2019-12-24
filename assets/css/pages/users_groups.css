@@ -1,0 +1,50 @@
+.level0 {
+  /* padding-left: 10px; */
+  font-size: 19px;
+  font-weight: 700;
+}
+.level1 {
+  /* padding-left: 30px; */
+  font-size: 16px;
+  font-weight: 600;
+}
+.level2 {
+  /* padding-left: 50px; */
+  font-size: 15px;
+  font-weight: 500;
+}
+.level3 {
+  font-size: 14px;
+  font-weight: 400;
+}
+.row {
+  margin-top: 3px !important;
+}
+.space {
+  margin-left: 10px;
+  font-size: 14px;
+}
+.pad {
+  padding-left: 15px;
+}
+.first {
+  margin-bottom: 12px;
+  margin-top: 14px !important;
+  margin-right: -20px;
+}
+.only_chip {
+  cursor: pointer;
+  /* display: inline-block; */
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  /* line-height: 25px; */
+  /* background-color: #e3e3e3; */
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.btn-space {
+  margin-left: 2px; 
+  margin-right: 2px; 
+}
