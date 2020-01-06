@@ -1,5 +1,3 @@
-<footer>
-  <p>Posted by: Hege Refsnes</p>
-  <p>Contact information: <a href="mailto:someone@example.com">
-  someone@example.com</a>.</p>
-</footer>
+<div align="center" class="foote fixed-bottom">
+  <small>Contact: leonardpester@yahoo.com</small>
+</div>
