@@ -13,6 +13,13 @@ $this->load->view(
   );
 ?>
 
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+
+<body background="<?=$this->config->item('base_url')?>/files/images/body.jpg">
+<div style="background-color:white; width: 85%; margin-right: auto;margin-left: auto;height: 100vh;padding:20px;";>
   <div class="page-header">
     <h1>Lista surse</h1>
   </div>
@@ -26,13 +33,11 @@ $this->load->view(
   <table class="display" id="table_produs" style="'width:100%;">
       <thead>
             <tr>
-              <th width="150">Cheie sursa</th>
-              <th width="150">Logo</th>
-              <th width="150">Marime</th>
-              <th width="150">Nume sursa</th>
+              <th width="10">Nr. Crt.</th>
+              <th width="50">Imagine</th>
+              <th width="150">Descriere</th>
+              <th width="150">Pret</th>
               <th width="150">Url sursa</th>
-              
-             
             </tr>
       </thead>
 
@@ -40,26 +45,26 @@ $this->load->view(
 
 
           <?php
+          $i =1;
           foreach ($produse as $produs) {
-            $av = "./files/produsLogos/";
+           
           ?>
       <tr>
-          <td><?php echo $produs->produs_id; ?><br />
+          <td><?php echo $i; ?><br />
           <td>
           <?php 
-            if($produs->produs_avatar!= null && file_exists($av)==true){
+            if($produs->produs_avatar!= null){
             ?> 
-              <img id="produsImg" src='./files/produsLogos/<?=$produs->produs_avatar?>' style='max-height:20px' onclick="onImgClick(this)" >    
+              <img id="produsImg" src='<?=$this->config->item('base_url')?>/files/images/<?=$produs->produs_avatar?>' style='max-height:20px' onclick="onImgClick(this)" >    
             <?php
             }else{
            ?>
            <i class="fa fa-file text-secondary" style="font-size:20px;"></i>
-      
              <?php
             }
             ?>
           </td>
-          <td><?php echo substr($produs->produs_descriere,0,6); ?>KB</td>
+          <td><?php echo $produs->produs_descriere; ?></td>
           <td><?php echo $produs->produs_nume; ?></td>
           <td><?php echo $produs->produs_stoc;?></td>
          
@@ -71,40 +76,59 @@ $this->load->view(
 
       </tbody>
       <tfoot>
-      <tr>
-            <th>Cheie sursa</th>
-            <th width="150">Logo</th>
-            <th width="150">Marime</th>
-            <th width="150">Nume surs</th>
-            <th width="150">Url sursa</th>
+       <tr>
+              <th width="10">Nr. Crt.</th>
+              <th width="50">Imagine</th>
+              <th width="150">Descriere</th>
+              <th width="150">Pret</th>
+              <th width="150">Url sursa</th>
         </tr>
       </tfoot>
 </table>
-<div id="produsModal" class="modal" align="center">
-  <span class="close">&times;</span>
-  <img  id="sourgeImageModal" style="max-width:100%;">
-  <div id="caption"></div>
+
+
+<div id="produsModal" class="modal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">X</button>
+        <br>
+      </div>
+      <div class="modal-body">
+        <img  id="sourgeImageModal" style="max-width:100%;">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+ 
+ 
+ 
 </div>
 </div>
 </div>
+</div>
+</body>
 <script>
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+
 
 $(document).ready(function() {
 
     var table=$('#table_produs').dataTable({
-        "oSearch": {"sSearch": " "},
+        "oSearch": {"Search": " "},
         "language": {
             "lengthMenu": "Afiseaza cate _MENU_ randuri pe pagina",
             "zeroRecords": "Nu sunt rezultate.",
-            "info": "Pagina _PAGE_ din _PAGES_>",
-            "infoEmpty": "Nu sunt informatii.>",
-            "search": "Cautare:');?>",
+            "info": "Pagina _PAGE_ din _PAGES_",
+            "infoEmpty": "Nu sunt informatii.",
+            "search": "Cautare:",
             "paginate": {
                 "previous":  "Pagina precedenta",
-                "next": "'Pagina urmatoare"
+                "next": "Pagina urmatoare"
             },
             "infoFiltered": "(rezultate filtrate din _MAX_ totale)"
 
@@ -127,17 +151,11 @@ $(document).ready(function() {
         }]
     });
 
-      // Get the modal
       var modal = document.getElementById("produsModal");
-
-      // Get the <span> element that closes the modal
       var span = document.getElementsByClassName("close")[0];
-
-      // When the user clicks on <span> (x), close the modal
       span.onclick = function() { 
         modal.style.display = "none";
       }
-
   });
 
 
@@ -218,10 +236,9 @@ $(document).ready(function() {
     position: absolute;
     top: 15px;
     right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
+    
     font-weight: bold;
-    transition: 0.3s;
+    
   }
 
   .close:hover,
