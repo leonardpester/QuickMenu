@@ -21,7 +21,7 @@ $this->load->view(
 <body background="<?=$this->config->item('base_url')?>/files/images/body.jpg">
 <div style="background-color:white; width: 85%; margin-right: auto;margin-left: auto;height: 100vh;padding:20px;";>
   <div class="page-header">
-    <h1>Lista surse</h1>
+    <h1>Meniu</h1>
   </div>
 
 
@@ -35,19 +35,15 @@ $this->load->view(
             <tr>
               <th width="10">Nr. Crt.</th>
               <th width="50">Imagine</th>
+              <th width="150">Denumire</th>
               <th width="150">Descriere</th>
               <th width="150">Pret</th>
-              <th width="150">Url sursa</th>
             </tr>
       </thead>
-
       <tbody>
-
-
           <?php
           $i =1;
           foreach ($produse as $produs) {
-           
           ?>
       <tr>
           <td><?php echo $i; ?><br />
@@ -64,13 +60,14 @@ $this->load->view(
             }
             ?>
           </td>
-          <td><?php echo $produs->produs_descriere; ?></td>
           <td><?php echo $produs->produs_nume; ?></td>
-          <td><?php echo $produs->produs_stoc;?></td>
+          <td><?php echo $produs->produs_descriere; ?></td>
+          <td><?php echo $produs->produs_pret;?> lei</td>
          
       </tr>
 
       <?php
+      $i++;
       }
       ?>
 
@@ -79,9 +76,9 @@ $this->load->view(
        <tr>
               <th width="10">Nr. Crt.</th>
               <th width="50">Imagine</th>
+              <th width="150">Denumire</th>
               <th width="150">Descriere</th>
               <th width="150">Pret</th>
-              <th width="150">Url sursa</th>
         </tr>
       </tfoot>
 </table>
