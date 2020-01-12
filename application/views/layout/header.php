@@ -63,9 +63,84 @@ if (isset($requireCSS) && is_array($requireCSS) && count($requireCSS) > 0) {
 <?php if (!$hidemenu) { ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
      <a class="navbar-brand" href="/">QuickMenu</a>
+ 
+     <a class="navbar-brand" href="#" style="cursor:pointer"  onclick="openModal();" >Admin-Panel</a></button>
+
     </nav>
 
 <?php } ?>
 <div class="wrapper">
     <div class="content ">
         <div class="container-fluid">
+
+
+
+
+<div id="adminModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <p>Acest camp poate fi introdus doar de un administrator</p>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+         <input type="password" class="form-control" id="password_admin" >
+         <br>
+         <a  class="btn btn-primary form-control"  onclick="adminControl()">Confirma</a>
+         <br>
+          <div id="messages"></div>
+
+           <div id="caption"></div>
+        <br>     
+        <div class="text-center">
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+  $(document).ready(function(){
+  // Get the modal
+  var modal = document.getElementById("adminModal");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+    modal.style.display = "none";
+}
+
+
+  });
+
+   function adminControl(){
+   //post catre metoda de stergere utilizator  userid si parola 
+   var password = $('#password_admin').val();
+    $.ajax({
+      type: "POST",
+      url: "<?php echo $this->config->item('base_url').'index.php/admin/login'; ?>",
+      data: {password : password},
+      success: function(response){
+        console.log(response);
+        if(response==='Success'){   
+          window.location.<?php echo $this->config->item('base_url').'index.php/chelner/index'; ?>;
+        }else{
+           $('#messages').html(response);
+        }
+      },
+    });  
+    }
+
+
+
+  function openModal(){
+    $('#adminModal').modal('show');
+  }
+
+</script>

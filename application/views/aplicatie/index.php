@@ -38,6 +38,8 @@ $this->load->view(
               <th width="150">Denumire</th>
               <th width="150">Descriere</th>
               <th width="150">Pret</th>
+              <th witdh="10">Cantitate</th>
+              <th width="10"></th>
             </tr>
       </thead>
       <tbody>
@@ -63,9 +65,9 @@ $this->load->view(
           <td><?php echo $produs->produs_nume; ?></td>
           <td><?php echo $produs->produs_descriere; ?></td>
           <td><?php echo $produs->produs_pret;?> lei</td>
-         
+          <td><input id="produs_numar"class="form-check" type="number" value="1" min="0" max="50" style="display:none" /></td>
+          <td><input id="produs_checkbox" type="checkbox"></td>
       </tr>
-
       <?php
       $i++;
       }
@@ -79,6 +81,8 @@ $this->load->view(
               <th width="150">Denumire</th>
               <th width="150">Descriere</th>
               <th width="150">Pret</th>
+              <th width="10">Cantitate</th>
+              <th width="10"></th>
         </tr>
       </tfoot>
 </table>
@@ -114,6 +118,13 @@ $this->load->view(
 
 
 $(document).ready(function() {
+
+
+
+
+
+  
+
 
     var table=$('#table_produs').dataTable({
         "oSearch": {"Search": " "},
@@ -153,6 +164,16 @@ $(document).ready(function() {
       span.onclick = function() { 
         modal.style.display = "none";
       }
+
+    
+
+    $('#produs_checkbox').click(function() {
+      console.log("dsa");
+      if(this.checked) {
+            $('#produs_numar').css("display","block");
+          }
+            
+    });
   });
 
 
