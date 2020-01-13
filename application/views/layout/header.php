@@ -89,6 +89,7 @@ if (isset($requireCSS) && is_array($requireCSS) && count($requireCSS) > 0) {
          <br>
          <a  class="btn btn-primary form-control"  onclick="adminControl()">Confirma</a>
          <br>
+         <br>
           <div id="messages"></div>
 
            <div id="caption"></div>
@@ -129,15 +130,13 @@ if (isset($requireCSS) && is_array($requireCSS) && count($requireCSS) > 0) {
       success: function(response){
         console.log(response);
         if(response==='Success'){   
-          window.location.<?php echo $this->config->item('base_url').'index.php/chelner/index'; ?>;
+          window.location.assign('<?= $this->config->item('base_url').'index.php/admin/list'; ?>') ;
         }else{
            $('#messages').html(response);
         }
       },
     });  
     }
-
-
 
   function openModal(){
     $('#adminModal').modal('show');

@@ -19,7 +19,6 @@ class Admin extends APP_Controller
         $this->login();
     }
 
-    //get all produs
     public function login()
     {
         $password = $this->input->post('password');
@@ -30,16 +29,22 @@ class Admin extends APP_Controller
         }else{
             
             if($password==$passwordDB[0]->password){
+                // header('Location: '.$this->config->item('base_url').'index.php/admin/list');
                 echo 'Success';
             }else{
                 echo '<div class="alert alert-danger">Parola nu corespunde!</div>';  
                 return false;
             }
-            
         }
         return true;
-
-        
     }
+    
+    public function list(){
+        $this->load->view(
+            'admin/index.php'
+          );
+    }
+    
+
 
 }
