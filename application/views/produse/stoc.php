@@ -40,6 +40,7 @@ $this->load->view(
               <th width="10%">Pret</th>
               <th witdh="10%">Cantitate</th>
               <th witdh="5%">Stoc</th>
+              <th>Actiuni</th>
              
             </tr>
       </thead>
@@ -68,6 +69,10 @@ $this->load->view(
           <td><?php echo $produs->produs_pret;?> lei</td>
           <td>10</td>
           <td>23</td>
+          <th>
+            <a href='<?php echo $this->config->item('base_url').'sources/edit/' ?>' ><i class='fa fa-edit' style='font-size:30px;' data-toggle="tooltip" title="Editeaza produsul"></i></a>
+            <a href='<?php echo $this->config->item('base_url').'sources/delete/' ?>' onclick="return confirm('Sunteti sigur ca doriti sa stergeti acest produs?);"><i class="fa fa-remove" style="font-size:30px;color:red;" data-toggle="tooltip" title="Sterge produsul"></i></a>
+          </th>
       </tr>
       <?php
       $i++;
@@ -84,6 +89,7 @@ $this->load->view(
               <th width="10%">Pret</th>
               <th witdh="10%">Cantitate</th>
               <th witdh="5%">Stoc</th>
+              <th>Actiuni</th>
               
         </tr>
       </tfoot>

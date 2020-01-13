@@ -20,8 +20,13 @@ $this->load->view(
 </head>
 <body background="<?=$this->config->item('base_url')?>/files/images/body.jpg">
 <div style="background-color:white; width: 85%; margin-right: auto;margin-left: auto;height: 100vh">
-<br>
+
   <div align="center">
+  <br>
+
+  <div class="alert alert-dark" align="center" style="margin-right: 20px;margin-left: 20px;">
+ 	 <h3>Panoul administratorului</h3>
+  </div>
   <div class="container text-center">
 			<div class="row">
 				<div class="col-lg-12">
@@ -35,6 +40,7 @@ $this->load->view(
 							Comenzi primite
 							<br />
 						</a>
+						<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 						<a id="aplicatie" class="btn btn-success" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/comenzi/comenzi_finalizate/'; ?>'>
 							<br />
 							<i class="fa fa-book fa-5x"></i>
@@ -60,6 +66,7 @@ $this->load->view(
 							Adauga produse
 							<br />
 						</a>
+						<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 						<a id="aplicatie" class="btn btn-dark" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/produse/stoc/'; ?>'>
 							<br />
                             <i class="fa fa-angle-double-down fa-5x"></i>

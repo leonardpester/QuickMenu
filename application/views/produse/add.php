@@ -18,7 +18,7 @@ $this->load->view(
     <h1>Adauga un produs</h1>
   </div>
 
-  <form id="addForm" method="POST" action="sources/addAction" name="myForm " enctype="multipart/form-data" >
+  <form id="addForm" method="POST" action="addAction" name="myForm " enctype="multipart/form-data" >
     <input type="hidden" class="formToken" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
     <div class="row">
     
@@ -35,7 +35,7 @@ $this->load->view(
 
     <div class="form-group col-md-12 ">
         <label for="produs_avatar">Avatar</label>
-        <input type="file" class="form-control" id="produs_avatar" name="produs_avatar" value="" multiple accept=".png,.jpg,.giff" required>
+        <input type="file" class="form-control" id="produs_avatar" name="produs_avatar" value="" multiple accept=".png,.jpg,.giff" >
     </div>
 
     <div class="form-group col-md-12 ">
