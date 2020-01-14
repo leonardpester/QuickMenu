@@ -1,5 +1,4 @@
 <?php
-/** @var $produss object */
 
 $this->load->view(
     'layout/header',
@@ -50,28 +49,24 @@ $this->load->view(
           foreach ($produse as $produs) {
           ?>
       <tr>
-          <td><?php echo $i; ?><br />
+          <td><?php echo $i; ?><br >
           <td>
           <?php 
             if($produs->produs_avatar!= null){
             ?> 
               <img id="produsImg" src='<?=$this->config->item('base_url')?>/files/images/<?=$produs->produs_avatar?>' style='max-height:20px' onclick="onImgClick(this)" >    
-            <?php
-            }else{
-           ?>
+            <?php }else{ ?>
            <i class="fa fa-file text-secondary" style="font-size:20px;"></i>
-             <?php
-            }
-            ?>
+             <?php } ?>
           </td>
           <td><?php echo $produs->produs_nume; ?></td>
           <td><?php echo $produs->produs_descriere; ?></td>
           <td><?php echo $produs->produs_pret;?> lei</td>
           <td>10</td>
-          <td>23</td>
+          <td><?php echo $produs->produs_stoc;?></td>
           <th>
-            <a href='<?php echo $this->config->item('base_url').'sources/edit/' ?>' ><i class='fa fa-edit' style='font-size:30px;' data-toggle="tooltip" title="Editeaza produsul"></i></a>
-            <a href='<?php echo $this->config->item('base_url').'sources/delete/' ?>' onclick="return confirm('Sunteti sigur ca doriti sa stergeti acest produs?);"><i class="fa fa-remove" style="font-size:30px;color:red;" data-toggle="tooltip" title="Sterge produsul"></i></a>
+            <a href='<?php echo $this->config->item('base_url').'index.php/produse/edit/'.$produs->produs_id; ?>' ><i class='fa fa-edit' style='font-size:30px;' data-toggle="tooltip" title="Editeaza produsul"></i></a>
+            <a href='<?php echo $this->config->item('base_url').'index.php/produse/delete/'.$produs->produs_id ?>' onclick="return confirm('Sunteti sigur ca doriti sa stergeti acest produs?');"><i class="fa fa-remove" style="font-size:30px;color:red;" data-toggle="tooltip" title="Sterge produsul"></i></a>
           </th>
       </tr>
       <?php
@@ -101,12 +96,11 @@ $this->load->view(
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">X</button>
+        <button type="button" id="inchideModal" class="close" data-dismiss="modal">X</button>
         <br>
       </div>
       <div class="modal-body">
-        <img  id="sourgeImageModal" style="max-width:100%;">
-
+        <img  id="produsImageModal" style="max-width:100%;">
       </div>
     </div>
   </div>
@@ -157,20 +151,17 @@ $(document).ready(function() {
         }]
     });
 
-      var modal = document.getElementById("produsModal");
-      var span = document.getElementsByClassName("close")[0];
-      span.onclick = function() { 
-        modal.style.display = "none";
+      $('#inchideModal').click = function() { 
+        console.log("dsadsad");
+        $('#produsModal').css('display','none');
       }
   });
 
 
   function onImgClick(e){
     $('#produsModal').css('display','block');
-    $('#sourgeImageModal').attr('src',e.src);
-    console.log(e.src);
+    $('#produsImageModal').attr('src',e.src);
   }
-
 
 </script>
 

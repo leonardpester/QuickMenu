@@ -13,6 +13,7 @@ $this->load->view(
   );
 ?>
 
+  
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -88,12 +89,12 @@ $this->load->view(
 </table>
 
 
-<div id="produsModal" class="modal" role="dialog">
+<div id="meniuModal" class="modal" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">X</button>
+        <button type="button" class="close closeModal" data-dismiss="modal">X</button>
         <br>
       </div>
       <div class="modal-body">
@@ -159,9 +160,9 @@ $(document).ready(function() {
         }]
     });
 
-      var modal = document.getElementById("produsModal");
-      var span = document.getElementsByClassName("close")[0];
-      span.onclick = function() { 
+      var modal = document.getElementById("meniuModal");
+      var span1 = document.getElementsByClassName("closeModal")[0];
+      span1.onclick = function() { 
         modal.style.display = "none";
       }
 
@@ -178,7 +179,7 @@ $(document).ready(function() {
 
 
   function onImgClick(e){
-    $('#produsModal').css('display','block');
+    $('#meniuModal').css('display','block');
     $('#sourgeImageModal').attr('src',e.src);
     console.log(e.src);
   }

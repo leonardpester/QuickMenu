@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 /** @var $hidemenu bool */
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -26,7 +27,7 @@ if (isset($requireCSS) && is_array($requireCSS) && count($requireCSS) > 0) {
 }
 
 ?>
-<!DOCTYPE html>
+
 <html>
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -52,7 +53,7 @@ if (isset($requireCSS) && is_array($requireCSS) && count($requireCSS) > 0) {
 
 
   <?php foreach ($requiredJSFiles as $jsfile) { ?>
-      <script src="./assets/js/<?php echo $jsfile; ?>"></script>
+      <script src="/assets/js/<?php echo $jsfile; ?>"></script>
   <?php } ?>
 
 
