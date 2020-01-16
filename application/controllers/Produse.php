@@ -46,6 +46,7 @@ class Produse extends CI_Controller {
             'produs_descriere'  => $this->input->post('produs_descriere'),
             'produs_stoc'       => $this->input->post('produs_stoc'),
             'produs_pret'       => $this->input->post('produs_pret'),
+            'produs_cantitate'    =>$this->input->post('produs_cantitate')
         );
        
         // try to insert source
@@ -101,7 +102,8 @@ class Produse extends CI_Controller {
                 'produs_nume'         =>$this->input->post('produs_nume'),
                 'produs_descriere'    =>$this->input->post('produs_descriere'),
                 'produs_stoc'         =>$this->input->post('produs_stoc'),
-                'produs_pret'         =>$this->input->post('produs_pret')
+                'produs_pret'         =>$this->input->post('produs_pret'),
+                'produs_cantitate'    =>$this->input->post('produs_cantitate')
             );
             
             // try to update source

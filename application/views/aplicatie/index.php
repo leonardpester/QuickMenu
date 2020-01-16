@@ -19,113 +19,84 @@ $this->load->view(
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
 
+
 <body background="<?=$this->config->item('base_url')?>/files/images/body.jpg">
 <div style="background-color:white; width: 85%; margin-right: auto;margin-left: auto;height: 100vh;padding:20px;";>
   <div class="page-header">
     <h1>Meniu</h1>
   </div>
-
-
-
-
-  <div class='row'>
-
-  <div class='col-md-12'  >
-  <table class="display" id="table_produs" style="'width:100%;">
-      <thead>
-            <tr>
-              <th width="10">Nr. Crt.</th>
-              <th width="50">Imagine</th>
-              <th width="150">Denumire</th>
-              <th width="150">Descriere</th>
-              <th width="150">Pret</th>
-              <th witdh="10">Cantitate</th>
-              <th width="10"></th>
-            </tr>
-      </thead>
-      <tbody>
-          <?php
-          $i =1;
-          foreach ($produse as $produs) {
-          ?>
-      <tr>
-          <td><?php echo $i; ?><br />
-          <td>
-          <?php 
-            if($produs->produs_avatar!= null){
-            ?> 
-              <img id="produsImg" src='<?=$this->config->item('base_url')?>/files/images/<?=$produs->produs_avatar?>' style='max-height:20px' onclick="onImgClick(this)" >    
-            <?php
-            }else{
-           ?>
-           <i class="fa fa-file text-secondary" style="font-size:20px;"></i>
-             <?php
-            }
-            ?>
-          </td>
-          <td><?php echo $produs->produs_nume; ?></td>
-          <td><?php echo $produs->produs_descriere; ?></td>
-          <td><?php echo $produs->produs_pret;?> lei</td>
-          <td><input id="produs_numar"class="form-check" type="number" value="1" min="0" max="50" style="display:none" /></td>
-          <td><input id="produs_checkbox" type="checkbox"></td>
-      </tr>
-      <?php
-      $i++;
-      }
-      ?>
-
-      </tbody>
-      <tfoot>
-       <tr>
-              <th width="10">Nr. Crt.</th>
-              <th width="50">Imagine</th>
-              <th width="150">Denumire</th>
-              <th width="150">Descriere</th>
-              <th width="150">Pret</th>
-              <th width="10">Cantitate</th>
-              <th width="10"></th>
-        </tr>
-      </tfoot>
-</table>
-
-
-<div id="meniuModal" class="modal" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close closeModal" data-dismiss="modal">X</button>
-        <br>
-      </div>
-      <div class="modal-body">
-        <img  id="sourgeImageModal" style="max-width:100%;">
-
-      </div>
+    <div id="gustari" class='row'>
+      <?php foreach($meniuri['gustari'] as $meniu ) {?>
+        <div class='col-md-3'  >
+          <ul class="check-card">
+            <li class="check-card-item">
+              <input type="checkbox" id="check<?= $meniu->produs_id?>" name="check" value="1">
+              <label for="check<?= $meniu->produs_id?>" class="radio"></label>
+              <div class="check-card-bg"></div>
+              <div class="check-card-body">
+                <div class="check-card-toggle">
+                  <span></span>
+                  <span></span>
+                </div>
+                  <img src="<?=$this->config->item('base_url')?>/files/images/body.jpg" style="width:100%;height:150px;">
+              
+                <div class="check-card-body-in text-center">
+                  <h3 class="check-card-title">- <?= $meniu->produs_nume?> -</h3>
+                  <p class="check-card-description">
+                    <?= $meniu->produs_descriere?> 
+                  </p>
+                  <p class="check-card-description">
+                    Pret: <?= $meniu->produs_pret?> lei
+                  </p>
+                </div>
+                
+              </div>
+            </li>
+          </ul>
+        </div>
+      <?php }?>
+      <button class="btn" id='next_mic_dejun'>NEXT<button>
     </div>
-  </div>
-</div>
+    <div id="mic_dejun" class='row' style="display:none">
+      <?php foreach($meniuri['mic_dejun'] as $meniu ) {?>
+        <div class='col-md-3'  >
+          <ul class="check-card">
+            <li class="check-card-item">
+              <input type="checkbox" id="check<?= $meniu->produs_id?>" name="check" value="1">
+              <label for="check<?= $meniu->produs_id?>" class="radio"></label>
+              <div class="check-card-bg"></div>
+              <div class="check-card-body">
+                <div class="check-card-toggle">
+                  <span></span>
+                  <span></span>
+                </div>
+                  <img src="<?=$this->config->item('base_url')?>/files/images/body.jpg" style="width:100%;height:150px;">
+              
+                <div class="check-card-body-in text-center">
+                  <h3 class="check-card-title">- <?= $meniu->produs_nume?> -</h3>
+                  <p class="check-card-description">
+                    <?= $meniu->produs_descriere?> 
+                  </p>
+                  <p class="check-card-description">
+                    Pret: <?= $meniu->produs_pret?> lei
+                  </p>
+                </div>
+                
+              </div>
+            </li>
+          </ul>
+        </div>
+      <?php }?>
+      
+    </div>
 
 
-
- 
- 
- 
-</div>
-</div>
-</div>
 </div>
 </body>
 <script>
 
 
 $(document).ready(function() {
-
-
-
-
-
-  
-
 
     var table=$('#table_produs').dataTable({
         "oSearch": {"Search": " "},
@@ -185,93 +156,155 @@ $(document).ready(function() {
   }
 
 
+
+ //Select all
+    $("#selectAll").change(function () {
+        if ($(this).is(":checked")) {
+            $(".checkboxSelection").each(function () {
+                $(this).prop('checked', true);
+            });
+        }
+        else {
+            $(".checkboxSelection").each(function () {
+                $(this).prop('checked', false);
+            });
+        }
+    });
+
+    $(".checkboxSelection").change(function () {
+        var allSelected = true;
+        $(".checkboxSelection").each(function () {
+            if (!$(this).is(":checked")) {
+                $("#selectAll").prop('checked', false);
+                allSelected = false;
+            }
+        });
+        if (allSelected)
+            $("#selectAll").prop('checked', true);
+    });
 </script>
 
   <style>
 
-  #produsImg {
+  * {
+	margin: 0;
+	padding: 0;
+}
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body {
+	font-family: 'Josefin Sans', sans-serif;
+	background: #ddd;
+}
+.check-card {
+	list-style: none;
+	margin: 40px auto;
+  width: 16em;
+}
+.check-card .check-card-item {
+	position: relative;
+	width: 100%;
+	margin: 0 1% 15px;
+	font-size: 16px;
+	background: #050004;
+	overflow: hidden;
+}
+.check-card li label {
+	display: block;
+	position: absolute;
+	height: 300px;
+	width: 100%;
+	z-index: 100;
+	cursor: pointer;
+}
+.check-card .check-card-body {
+	height: 24em;
+	color: #fff;
+	z-index: 2;
+	position: relative;
+}
+.check-card .check-card-body-in {
+	padding: 40px 20px 20px;
 
-    cursor: pointer;
-    transition: 0.3s;
-  }
+}
+.check-card .check-card-title {
+	font-family: 'Oswald', sans-serif;
+	font-size: 32px;
+	margin-bottom: 5px;
+}
+.check-card .check-card-bg,
+.check-card .check-card-toggle {
+	position: relative;
+	background: #1e54ea;
+	width: 36px;
+	height: 36px;
+	top: 10px;
+	left: 10px;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+.check-card .check-card-bg {
+	position: absolute;
+	background: #3f9037;
+	-webkit-transition: all .3s ease-out;
+	transition: all .3s ease-out;
+	-webkit-transform:scale(1);
+	transform:scale(1);
+	z-index: 0;
+}
+.check-card .check-card-toggle span {
+	position: absolute;
+	display: block;
+	width: 20px;
+	margin-left: -10px;
+	height: 1px;
+	top: 50%;
+	left: 50%;
+	background: #fff;
+	-webkit-transition: all .4s ease-out;
+	transition: all .4s ease-out;
 
-  #produsImg:hover {opacity: 0.7;}
-
-  /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-  }
-
-  /* Modal Content (image) */
-  .modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-  }
-
-  /* Caption of Modal Image */
-  #caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    height: 150px;
-  }
-
-  /* Add Animation */
-  .modal-content, #caption {  
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-  }
-
-  @-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)} 
-    to {-webkit-transform:scale(1)}
-  }
-
-  @keyframes zoom {
-    from {transform:scale(0)} 
-    to {transform:scale(1)}
-  }
-
-  /* The Close Button */
-  .close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    
-    font-weight: bold;
-    
-  }
-
-  .close:hover,
-  .close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  /* 100% Image Width on Smaller Screens */
-  @media only screen and (max-width: 700px){
-    .modal-content {
-      width: 100%;
-    }
-  }
+	-webkit-transform: rotate(-270deg);
+	transform: rotate(-270deg);
+}
+.check-card .check-card-toggle span:first-child {
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+.check-card .check-card-cancel {
+	font-size: 18px;
+	border-top: solid 1px #fff;
+	border-bottom: solid 1px #fff;
+	padding: 10px 0 7px;
+	text-align: center;
+	position: absolute;
+	bottom: -50px;
+	margin: 0 7%;
+	width: 86%;
+	-webkit-transition: all .3s cubic-bezier(0.5, -0.8, 0.5, 1.8);
+	transition: all .3s cubic-bezier(0.5, -0.8, 0.5, 1.8);
+}
+.check-card input[type=checkbox] {
+	display: none;
+}
+.check-card input[type=checkbox]:checked ~ .check-card-body .check-card-toggle span {
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+.check-card input[type=checkbox]:checked ~ .check-card-body .check-card-toggle span:first-child {
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+.check-card input[type=checkbox]:checked ~ .check-card-bg {
+	-webkit-transform:scale(25);
+	transform:scale(25);
+}
+.check-card input[type=checkbox]:checked ~ .check-card-body .check-card-cancel {
+	bottom: 30px;
+}
 </style>
 <?php $this->load->view('layout/footer'); ?>

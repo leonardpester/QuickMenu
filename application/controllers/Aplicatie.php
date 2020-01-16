@@ -27,11 +27,60 @@ class Aplicatie extends APP_Controller
          if(!$product) {
              $product = array();
          }
- 
+
+        $meniu = [
+            'mic_dejun'     => [],
+            'gustari'       => [],
+            'paste'         => [],
+            'salate'        => [],
+            'garnituri'     => [],
+            'desert'        => [],
+            'pui'           => [],
+            'porc'          => [],
+            'peste'         => [],
+            'ciorbe'        => [],
+            'pizza'         => [],
+            'vinuri'        => [],
+            'bere'          => [],
+            'alcoolice'     => [],
+            'racoritoare'   => [],
+            'bauturi_calde' => [],
+        ];
+        
+        foreach($product as $key=>$produs){
+            
+
+            switch ($produs->produs_categorie) {
+            case '1':
+                $meniu['mic_dejun'][$key] = $produs;
+                break;
+            case '2':
+                $meniu['gustari'][$key] = $produs;
+                break;
+            case '3':
+                $meniu['paste'][$key] = $produs;
+                break;
+            case '4':
+                $meniu['salate'][$key] = $produs;
+                break;
+            case '5':
+                $meniu['garnituri'][$key] = $produs;
+                break;
+            case '5':
+                $meniu['desert'][$key] = $produs;
+                break;
+            default:
+                break;
+            }
+        }
+
          // Load the produs list view
          $this->load->view(
              'aplicatie/index.php',
-             ['produse' => $product]
+             [
+                'produse' => $product,
+                'meniuri'   => $meniu
+              ]
            );
     }
 

@@ -24,7 +24,7 @@ $this->load->view(
   <div align="center">
   <br>
 
-  <div class="alert alert-dark" align="center" style="margin-right: 20px;margin-left: 20px;">
+  <div class="alert alert-danger" align="center" style="margin-right: 20%;margin-left: 20%;">
  	 <h3>Panoul administratorului</h3>
   </div>
   <div class="container text-center">
@@ -32,7 +32,7 @@ $this->load->view(
 				<div class="col-lg-12">
 					<br><br><br>
 					<p>
-						<a id="chelner" class="btn btn-info" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/comenzi/comenenzi_primite/'; ?>'>
+						<a id="chelner" class="btn btn-info" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/comenzi/comenzi_primite/'; ?>'>
 							<br />
 						    <i class="fa fa-inbox fa-5x"></i>
 							<br />

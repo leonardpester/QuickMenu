@@ -13,4 +13,12 @@ class Comenzi extends CI_Controller {
 	{
 		$this->load->view('comenzi/index');
     }  
+
+	public function comenzi_finalizate(){
+		$this->load->view('comenzi/comenzi_finalizate');
+	}
+
+	public function comenzi_primite(){
+		$this->load->view('comenzi/comenzi_primite');
+	}
 }

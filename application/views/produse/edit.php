@@ -39,18 +39,23 @@ $this->load->view(
         <input type="file" class="form-control" id="produs_avatar" name="produs_avatar" value="<?php echo ($post) ? set_value('produs_avatar') : $produs->produs_avatar; ?>" multiple accept=".png,.jpg,.giff" >
     </div>
 
-    <div class="form-group col-md-12 ">
+    <div class="form-group col-md-4 ">
         <label for="produs_stoc">STOC</label>
-        <input type="text" class="form-control" id="produs_stoc" name="produs_stoc" value="<?php echo ($post) ? set_value('produs_stoc') : $produs->produs_stoc; ?>" >
+        <input type="number" class="form-control" id="produs_stoc" name="produs_stoc" value="<?php echo ($post) ? set_value('produs_stoc') : $produs->produs_stoc; ?>" >
     </div>
 
-    <div class="form-group col-md-12 ">
+    <div class="form-group col-md-4 ">
         <label for="produs_pret">Pret produs</label>
-        <input type="text" class="form-control" id="produs_pret" name="produs_pret" value="<?php echo ($post) ? set_value('produs_pret') : $produs->produs_pret; ?>" >
+        <input type="number" class="form-control" id="produs_pret" name="produs_pret" value="<?php echo ($post) ? set_value('produs_pret') : $produs->produs_pret; ?>" >
+    </div>
+    
+    <div class="form-group col-md-4 ">
+        <label for="produs_cantitate">Cantitate produs</label>
+        <input type="number" class="form-control" id="produs_cantitate" name="produs_cantitate" value="<?php echo ($post) ? set_value('produs_cantitate') : $produs->produs_cantitate; ?>" >
     </div>
 
     <div class='col-md-12'>
-        <button type="submit" class="btn btn-primary" value=""  name="action" id="action_btn" >Adauga produs</button>
+        <button type="submit" class="btn btn-success" value=""  name="action" id="action_btn" >Adauga produs</button>
         <a href="<?php echo $this->config->item('base_url').'index.php/admin/list'; ?>" class='btn btn-danger'>Renunta</a>
     </div>
 
