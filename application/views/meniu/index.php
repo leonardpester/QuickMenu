@@ -20,7 +20,7 @@ $this->load->view(
 <body background="<?=$this->config->item('base_url')?>/files/images/body.jpg">
 <div style="background-color:white; width: 85%; margin-right: auto;margin-left: auto;height: 100vh;padding:20px;";>
   <div class="page-header">
-    <h1>Inventar</h1>
+    <h1>Meniuri</h1>
   </div>
 
 
@@ -31,26 +31,31 @@ $this->load->view(
   <div class='col-md-12'  >
   <table class="display" id="table_produs" style="'width:100%;">
       <thead>
-            <tr>
-               <th >Nr. Crt.</th>    
-              <th >Denumire</th>  
-              <th >Cantitate</th> 
-               <th width="150"><a href='<?php echo $this->config->item('base_url').'index.php/produse/adaugaProdus'; ?>'><button class='btn btn-success btn-sm d-block'>Adauga produs</button></a></th>
-            </tr>
+        <tr>
+            <th >Nr. Crt.</th>    
+            <th>Denumire</th>  
+            <th>Descriere</th> 
+            <th>Pret</th> 
+            <th>Ingrediente</th> 
+            <th>Categorie</th> 
+            <th width="150"><a href='<?php echo $this->config->item('base_url').'index.php/meniu/adaugaMeniu'; ?>'><button class='btn btn-primary btn-sm d-block'>Adauga meniu</button></a></th>
+        </tr>
       </thead>
       <tbody>
           <?php
           $i =1;
-          foreach ($produse as $produs) {
+          foreach ($meniuri as $meniu) {
           ?>
       <tr>
           <td><?php echo $i; ?><br >
-          <td><?php echo $produs->produs_nume; ?></td>
-          <td><?php echo $produs->produs_cantitate;?>g</td>
-         
+          <td><?php echo $meniu->meniu_nume; ?></td>
+          <td><?php echo $meniu->meniu_descriere;?></td>
+          <td><?php echo $meniu->meniu_pret;?> lei</td>
+          <td><?php echo $meniu->meniu_ingrediente;?></td>
+          <td><?php echo $meniu->categorie_nume;?></td>     
           <th>
-            <a href='<?php echo $this->config->item('base_url').'index.php/produse/edit/'.$produs->produs_id; ?>' ><i class='fa fa-edit' style="font-size:30px;" data-toggle="tooltip" title="Editeaza produsul"></i></a>
-            <a href='<?php echo $this->config->item('base_url').'index.php/produse/delete/'.$produs->produs_id ?>' onclick="return confirm('Sunteti sigur ca doriti sa stergeti acest produs?');"><i class="fa fa-remove" style="font-size:30px;color:red;" data-toggle="tooltip" title="Sterge produsul"></i></a>
+            <a href='<?php echo $this->config->item('base_url').'index.php/meniu/edit/'.$meniu->meniu_id; ?>' ><i class='fa fa-edit' style="font-size:30px;" data-toggle="tooltip" title="Editeaza meniul"></i></a>
+            <a href='<?php echo $this->config->item('base_url').'index.php/meniu/delete/'.$meniu->meniu_id ?>' onclick="return confirm('Sunteti sigur ca doriti sa stergeti acest produs?');"><i class="fa fa-remove" style="font-size:30px;color:red;" data-toggle="tooltip" title="Sterge meniul"></i></a>
           </th>
       </tr>
       <?php
@@ -61,12 +66,13 @@ $this->load->view(
       </tbody>
       <tfoot>
        <tr>
-              <th >Nr. Crt.</th>    
-              <th >Denumire</th>  
-              <th >Cantitate</th> 
-              <th width="150"><a href='<?php echo $this->config->item('base_url').'index.php/produse/adaugaProdus'; ?>'><button class='btn btn-success btn-sm d-block'>Adauga produs</button></a></th>
-       
-              
+            <th >Nr. Crt.</th>    
+            <th>Denumire</th>  
+            <th>Descriere</th> 
+            <th>Pret</th> 
+            <th>Ingrediente</th> 
+            <th>Categorie</th> 
+            <th width="150"><a href='<?php echo $this->config->item('base_url').'index.php/meniu/adaugaMeniu'; ?>'><button class='btn btn-primary btn-sm d-block'>Adauga meniu</button></a></th>
         </tr>
       </tfoot>
 </table>

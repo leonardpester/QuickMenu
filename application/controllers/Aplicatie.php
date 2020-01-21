@@ -50,7 +50,7 @@ class Aplicatie extends APP_Controller
         foreach($product as $key=>$produs){
             
 
-            switch ($produs->produs_categorie) {
+            switch ($produs) {
             case '1':
                 $meniu['mic_dejun'][$key] = $produs;
                 break;

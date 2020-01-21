@@ -57,22 +57,22 @@ $this->load->view(
 				<div class="col-lg-12">
 					<br><br><br>
 					<p>
-						<a id="chelner" class="btn btn-primary" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/produse/adaugaProdus/'; ?>'>
+						<a id="meniuri" class="btn btn-primary" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/meniu/meniu/'; ?>'>
 							<br />
-                            <i class="fa fa-plus-square fa-5x"></i>
+                            <i class="fa fa-medium fa-5x"></i>
 							
 							<br />
 							<br />
-							Adauga produse
+							Meniuri
 							<br />
 						</a>
 						<a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-						<a id="aplicatie" class="btn btn-dark" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/produse/stoc/'; ?>'>
+						<a id="produse" class="btn btn-dark" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/produse/stoc/'; ?>'>
 							<br />
-                            <i class="fa fa-angle-double-down fa-5x"></i>
+                            <i class="fa fa-cart-plus fa-5x"></i>
 							<br />
 							<br />
-							Vezi Stoc
+							Produse
 							<br />
 						</a>
 					</p>

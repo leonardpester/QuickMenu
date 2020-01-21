@@ -29,31 +29,12 @@ $this->load->view(
         <input type="text" class="form-control" id="produs_nume" name="produs_nume" value="<?php echo set_value('produs_nume'); ?>" required>
     </div>
 
-    <div class="form-group col-md-12 " >
-        <label for="produs_descriere">Descriere produs</label>
-        <input type="text" class="form-control" id="produs_descriere" name="produs_descriere" value="<?php echo set_value('produs_descriere'); ?>"required >
-    </div>
-
-    <div class="form-group col-md-12 ">
-        <label for="produs_avatar">Avatar</label>
-        <input type="file" class="form-control" id="produs_avatar" name="produs_avatar" value="<?php echo set_value('produs_avatar'); ?>" multiple accept=".png,.jpg,.giff" >
-    </div>
-
-    <div class="form-group col-md-4 ">
-        <label for="produs_stoc">STOC</label>
-        <input type="number" class="form-control"   id="produs_stoc" min="0" max="1000" step="1"  name="produs_stoc" value="<?php echo set_value('produs_stoc'); ?>">
-    </div>
-
-     <div class="form-group col-md-4 ">
+     <div class="form-group col-md-12 ">
         <label for="produs_cantitate">Cantitate produs</label>
         <input type="number" class="form-control"   id="produs_cantitate" min="0" max="1000" step="1"  name="produs_cantitate" value="<?php echo set_value('produs_cantitate'); ?>">
     </div>
 
-    <div class="form-group col-md-4 ">
-        <label for="produs_pret">Pret produs</label>
-        <input type="number" class="form-control"   id="produs_pret" min="0" max="1000" step="1"  name="produs_pret" value="<?php echo set_value('produs_pret'); ?>">
-    </div>
-
+  
     <div class='col-md-12'>
         <button type="number" class="btn btn-success" value=""  name="action" id="action_btn" >Adauga produs</button>
         <a href="<?php echo $this->config->item('base_url').'index.php/admin/list'; ?>" class='btn btn-danger'>Renunta</a>

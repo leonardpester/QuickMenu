@@ -43,9 +43,6 @@ class Produse extends CI_Controller {
     {
         $data = array(
             'produs_nume'       => $this->input->post('produs_nume'),
-            'produs_descriere'  => $this->input->post('produs_descriere'),
-            'produs_stoc'       => $this->input->post('produs_stoc'),
-            'produs_pret'       => $this->input->post('produs_pret'),
             'produs_cantitate'    =>$this->input->post('produs_cantitate')
         );
        
@@ -82,9 +79,7 @@ class Produse extends CI_Controller {
     {
         
         $this->form_validation->set_rules('produs_nume',  'Nume produs', 'required'); 
-        $this->form_validation->set_rules('produs_descriere',  'Descriere produs', 'required');       
-        $this->form_validation->set_rules('produs_stoc', 'Stoc', 'required');
-        $this->form_validation->set_rules('produs_pret', 'Pret', 'required');
+        $this->form_validation->set_rules('produs_cantitate',  'Cantitate(stoc) produs', 'required');       
         $this->form_validation->set_message('required',  'Campul "{field}" este obligatoriu.');
         $produs_id = $this->input->post('produs_id');
        
@@ -100,9 +95,6 @@ class Produse extends CI_Controller {
             
             $data = array(
                 'produs_nume'         =>$this->input->post('produs_nume'),
-                'produs_descriere'    =>$this->input->post('produs_descriere'),
-                'produs_stoc'         =>$this->input->post('produs_stoc'),
-                'produs_pret'         =>$this->input->post('produs_pret'),
                 'produs_cantitate'    =>$this->input->post('produs_cantitate')
             );
             
