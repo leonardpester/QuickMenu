@@ -11,6 +11,8 @@ $this->load->view(
   );
 ?>
 <!DOCTYPE html>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <script src="./src/bootstrap-input-spinner.js"></script>
 <html lang="en">
 
@@ -39,10 +41,22 @@ $this->load->view(
         <input type="number" class="form-control" id="meniu_pret" name="meniu_pret" value="<?php echo set_value('meniu_pret'); ?>">
     </div>
 
-    <div class="form-group col-md-4 ">
-        <label for="meniu_ingrediente">Ingrediente</label>
-        <input type="text" class="form-control" id="meniu_ingrediente" name="meniu_ingrediente" value="<?php echo set_value('meniu_ingrediente'); ?>">
-    </div>
+
+        <div class="col-md-4">
+            <label for="meniu_ingrediente" class="required">Produse</label>
+            <select class="form-control"  id="meniu_ingrediente" name="meniu_ingrediente[]" multiple="multiple">
+              
+              <?php
+              
+                  foreach ($produse as $produs) {
+              ?>
+                    <option value="<?= $produs->produs_nume; ?>" ><?= $produs->produs_nume; ?></option>
+              <?php
+              }
+              ?>
+            </select>
+            <span class="label_error">&nbsp;</span>
+          </div>
     
     <div class="form-group col-md-4 ">
         <label for="meniu_categorie">Categorie meniu</label>
@@ -87,6 +101,8 @@ $this->load->view(
 <script>
 
 $(document).ready(function() {
+    $('#meniu_ingrediente').select2();
+    
     $('#addForm').on('submit', function(){
         $('#action_btn').text("Se proceaseaza...");
         $('#action_btn').addClass('disabled');

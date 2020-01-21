@@ -43,6 +43,17 @@ class Meniu_model extends APP_Model
              return $var->get()->result();
 
     }
+    
+    public function getProductByMenu($meniu_id){
+         $var = $this->db
+            ->select('meniu_ingrediente')
+            ->from('meniuri')
+            ->where('meniu_id',$meniu_id)
+            ->get()
+            ->row();
+            return $var->meniu_ingrediente;
+             
+    }
 
    
    

@@ -9,7 +9,6 @@ class Produse_model extends APP_Model
         parent::__construct();
     }
 
-
     public function getProductById(int $produs_id)
     {
         return $this->db->select('*')->from('produse')->where('produs_id', $produs_id)->get()->row();

@@ -9,6 +9,7 @@ class Meniu extends CI_Controller {
 		$this->load->database();
         $this->load->model('meniu_model');
         $this->load->model('aplicatie_model');
+         $this->load->model('produse_model');
         $this->load->library('form_validation');
         $this->load->library('upload');
         $this->load->helper("security");
@@ -21,7 +22,9 @@ class Meniu extends CI_Controller {
 
     public function adaugaMeniu()
 	{
-		$this->load->view('meniu/add');
+        $produse=$this->aplicatie_model->getAllProduct();
+     
+		$this->load->view('meniu/add',['produse' => $produse]);
     } 
 
     public function meniu()
@@ -48,7 +51,6 @@ class Meniu extends CI_Controller {
                 'meniu_categorie'     =>$this->input->post('meniu_categorie'),
                 'meniu_ingrediente'   =>$this->input->post('meniu_ingrediente')
             );
-       
         // try to insert source
         if ($meniu_id = $this->meniu_model->insertMenu($data)) {
         
@@ -66,15 +68,16 @@ class Meniu extends CI_Controller {
     public function edit($meniu_id)
     {
         $meniu=$this->meniu_model->getMenuById($meniu_id);
-
+        $produse=$this->aplicatie_model->getAllProduct();
         if(!$meniu){
             header('Location: '.$this->config->item('base_url').'admin/list');
             exit();
         }
 
+        $produseMeniu = explode(",",$this->meniu_model->getProductByMenu($meniu_id));
         $this->load->view(
             'meniu/edit.php',
-            ['meniu' => $meniu, 'post' => 0]
+            ['meniu' => $meniu,'produseMeniu' => $produseMeniu,'produse' => $produse, 'post' => 0]
           );
     }
 
@@ -103,7 +106,7 @@ class Meniu extends CI_Controller {
                 'meniu_descriere'     =>$this->input->post('meniu_descriere'),
                 'meniu_pret'          =>$this->input->post('meniu_pret'),
                 'meniu_categorie'     =>$this->input->post('meniu_categorie'),
-                'meniu_ingrediente'  =>$this->input->post('meniu_ingrediente')
+                'meniu_ingrediente'   =>implode(",",$this->input->post('meniu_ingrediente')),
             );
             
             // try to update source
