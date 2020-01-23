@@ -55,6 +55,15 @@ class Meniu_model extends APP_Model
              
     }
 
+    public function getAllCategory(){
+         $var = $this->db
+            ->select('*')
+            ->from('categorie')
+            ->get()
+            ->result();
+            return $var;
+    }
+
    
    
 }

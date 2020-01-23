@@ -21,25 +21,34 @@ class Meniu extends CI_Controller {
     }  
 
     public function adaugaMeniu()
-	{
+	{ 
+        $categorii=$this->meniu_model->getAllCategory();
         $produse=$this->aplicatie_model->getAllProduct();
-     
-		$this->load->view('meniu/add',['produse' => $produse]);
+
+		$this->load->view('meniu/add',
+            [
+                'produse'   => $produse,
+                'categorii' => $categorii
+            ]
+        );
     } 
 
     public function meniu()
 	{
-         $meniu=$this->meniu_model->getAllMenus();
-         //when 0 produs
-         if(!$meniu) {
-             $meniu = array();
-         }
+        $meniu=$this->meniu_model->getAllMenus();
+       
+        //when 0 produs
+        if(!$meniu) {
+            $meniu = array();
+        }
  
-         // Load the produs list view
-         $this->load->view(
-             'meniu/index.php',
-             ['meniuri' => $meniu]
-           );
+        // Load the produs list view
+        $this->load->view(
+            'meniu/index.php',
+            [
+                'meniuri'   => $meniu
+            ]
+        );
     }  
 
     public function addAction()
@@ -49,8 +58,9 @@ class Meniu extends CI_Controller {
                 'meniu_descriere'     =>$this->input->post('meniu_descriere'),
                 'meniu_pret'          =>$this->input->post('meniu_pret'),
                 'meniu_categorie'     =>$this->input->post('meniu_categorie'),
-                'meniu_ingrediente'   =>$this->input->post('meniu_ingrediente')
-            );
+                'meniu_ingrediente'   =>implode(",",$this->input->post('meniu_ingrediente'))
+        );
+        
         // try to insert source
         if ($meniu_id = $this->meniu_model->insertMenu($data)) {
         
@@ -61,9 +71,11 @@ class Meniu extends CI_Controller {
             //if insert error push danger error and redirect to sources list;
             header('Location: '.$this->config->item('base_url').'index.php/meniu/addAction');
         }
+   
 
+    }
 
-     }
+  
 
     public function edit($meniu_id)
     {

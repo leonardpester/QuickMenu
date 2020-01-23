@@ -25,7 +25,6 @@ $this->load->view(
     <input type="hidden" class="formToken" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
     <div class="row">
     
-
     <div class="form-group col-md-12">
         <label for="meniu_nume">Nume meniu</label>
         <input type="text" class="form-control" id="meniu_nume" name="meniu_nume" value="<?php echo set_value('meniu_nume'); ?>" required>
@@ -41,26 +40,32 @@ $this->load->view(
         <input type="number" class="form-control" id="meniu_pret" name="meniu_pret" value="<?php echo set_value('meniu_pret'); ?>">
     </div>
 
-
-        <div class="col-md-4">
-            <label for="meniu_ingrediente" class="required">Produse</label>
-            <select class="form-control"  id="meniu_ingrediente" name="meniu_ingrediente[]" multiple="multiple">
-              
-              <?php
-              
-                  foreach ($produse as $produs) {
-              ?>
-                    <option value="<?= $produs->produs_nume; ?>" ><?= $produs->produs_nume; ?></option>
-              <?php
-              }
-              ?>
-            </select>
-            <span class="label_error">&nbsp;</span>
-          </div>
+    <div class="col-md-4">
+        <label for="meniu_ingrediente" class="required">Produse</label>
+        <select class="form-control"  id="meniu_ingrediente" name="meniu_ingrediente[]" multiple="multiple">  
+            <?php
+            
+                foreach ($produse as $produs) {
+            ?>
+                <option value="<?= $produs->produs_nume; ?>" ><?= $produs->produs_nume; ?></option>
+            <?php
+            }
+            ?>
+        </select>
+        <span class="label_error">&nbsp;</span>
+    </div>
     
     <div class="form-group col-md-4 ">
         <label for="meniu_categorie">Categorie meniu</label>
-        <input type="number" class="form-control" id="meniu_categorie" name="meniu_categorie"value="<?php echo set_value('meniu_categorie'); ?>">
+        <select class="form-control" id="meniu_categorie" name="meniu_categorie" >
+            <?php    
+            foreach ($categorii as $categorie) {
+            ?>
+            <option value="<?= $categorie->categorie_id; ?>"><?= $categorie->categorie_nume?></option>
+            <?php
+            }
+            ?>
+        </select>
     </div>
 
     <div class="form-group col-md-12 ">
@@ -69,7 +74,7 @@ $this->load->view(
     </div>
   
     <div class='col-md-12'>
-        <button type="number" class="btn btn-success" value=""  name="action" id="action_btn" >Adauga meniu</button>
+        <button type="number" class="btn btn-success" value=""  name="action" id="action_btn" >Adauga meniu </button>
         <a href="<?php echo $this->config->item('base_url').'index.php/admin/list'; ?>" class='btn btn-danger'>Renunta</a>
     </div>
 
