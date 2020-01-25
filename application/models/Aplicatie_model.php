@@ -14,13 +14,11 @@ class Aplicatie_model extends APP_Model
      *
      * @return object
      **/
-    public function getAllProduct()
+    public function getAllMenus()
     {
         $var = $this->db
             ->select('*')
-            ->from('produse')
-            ->order_by('produs_id', 'DESC');
-
+            ->from('meniuri');
              return $var->get()->result();
 
     }

@@ -77,7 +77,7 @@ $db['default'] = array(
     'dsn'   => 'mysqli:host=127.0.0.1;port=3306;dbname=licenta',
     'hostname' => '127.0.0.1',
     'username' => 'root',
-    'password' => 'leonardAAA123$.',
+    'password' => '',
     'database' => 'licenta',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
@@ -94,3 +94,4 @@ $db['default'] = array(
     'failover' => array(),
     'save_queries' => TRUE
 );
+//leonardAAA123$.
