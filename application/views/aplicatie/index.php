@@ -13,16 +13,99 @@ $this->load->view(
   );
 ?>
   
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
-
-
-<body background="<?=$this->config->item('base_url')?>/files/images/body.jpg">
-<div style="background-color:white; width: 85%; margin-right: auto;margin-left: auto;height: 100vh;padding:20px;";>
- 
+<div class="container-fluid">
+	
+	
+	<?php
+	
+	$i=0;
+	foreach($meniuri as $key=>$value){ if(count($value)<=0) continue; $categories[]=$key;?>
+	<div id="categorie_<?=$key;?>" class="catContainer mb-5" style="<?=$i?'display:none':'';?>">
+		<div class="row">
+		<div class="col-12 text-center "><h4><?=$key;?></h4><hr></div>
+		<?php foreach($value as $meniu){ ?>
+			<div class="col-md-3 text-center border border-left-0 border-right-0 rounded mb-4">
+				<h5><?=$meniu->meniu_nume;?></h5>
+				<img src="<?=$meniu->meniu_avatar?$meniu->meniu_avatar:'/files/images/poza_meniu.png'?>" width="100%"><hr>
+				<div class="row">
+					<div class="col-md-12 display-4">
+						<strong><?=$meniu->meniu_pret;?> LEI</strong>
+					</div>
+					
+					<div class="col-md-12 display-4">
+						<button class="btn btn-success btn-block" onclick='add_to_cart(`<?=json_encode($meniu);?>`)'>Adauga</button>
+					</div>
+					<div class="col-md-6 ">
+					
+					</div>
+					<div class="col-12">
+						<small><strong>Ingrediente</strong><br><?=$meniu->meniu_ingrediente;?></small>
+					</div>
+				</div>
+				
+			</div>
+		<?php }?>
+		</div>
+	</div>
+	
+	<?php $i++; }?>
 </div>
-</body>
+<nav class="navbar fixed-bottom navbar-light bg-dark">
+ <div class="col-3">
+ <button class="btn btn-primary" disabled id="btn_prev" onclick="prev_cat()"> << Inapoi</button>
+ </div>
+ <div class="col-3 text-center text-white" id="cart_details">
+ 0 produse in cos(0 lei)
+ </div>
+  <div class="col-3 text-right">
+ <button class="btn btn-primary" onclick="next_cat()" id="btn_next"> Inainte (<?=$categories[1];?>)</button>
+ </div>
+</nav>
 
-<?php $this->load->view('layout/footer'); ?>
+<script>
+ var categories=JSON.parse('<?=json_encode($categories);?>');
+ var currentCategory=0;
+ var maxCat=categories.length;
+ var cart=new Array();
+ var cartTotal=0;
+ 
+ function next_cat()
+ {
+	 $('#categorie_'+categories[currentCategory]).hide();
+	 $('#categorie_'+categories[currentCategory+1]).show();
+	 if(maxCat>(currentCategory+2)){
+		$('#btn_next').html("Inainte ("+categories[currentCategory+2]+")");
+	$('#btn_prev').html("Inapoi ("+categories[currentCategory]+")").prop('disabled',false);
+		currentCategory++;
+	 }else{
+		 $('#btn_prev').html("Inapoi ("+categories[currentCategory]+")").prop('disabled',false);
+		 $('#btn_next').html("Finalizeaza comanda").removeClass().addClass("btn btn-success").attr('onclick','checkout()');
+		currentCategory++;
+	} 
+ }
+ 
+ function prev_cat()
+ {
+	 $('#categorie_'+categories[currentCategory]).hide();
+	 $('#categorie_'+categories[currentCategory-1]).show();
+	 if((currentCategory-2)>=0){
+		$('#btn_next').html("Inainte ("+categories[currentCategory]+")").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
+		$('#btn_prev').html("Inapoi ("+categories[currentCategory-2]+")").prop('disabled',false);
+		currentCategory--;
+	 }else{
+		 $('#btn_prev').html("Inapoi ").prop('disabled',true);
+		 $('#btn_next').html("Inainte ("+categories[currentCategory]+")").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
+		 currentCategory--;
+	 } 
+ }
+ 
+ function add_to_cart(productInfo){
+	 cart.push(productInfo);
+	 productInfo=JSON.parse(productInfo);
+	 cartTotal+=parseFloat(productInfo['meniu_pret']);
+	 $('#cart_details').html(cart.length +' produse in cos ('+ cartTotal +' lei)');
+ }
+ 
+ 
+</script>
+<?php //$this->load->view('layout/footer'); ?>

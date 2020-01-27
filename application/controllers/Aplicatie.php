@@ -86,7 +86,7 @@ class Aplicatie extends APP_Controller
                 break;
             }
         }
-
+		
         // Load the produs list view
         $this->load->view(
             'aplicatie/index.php',
