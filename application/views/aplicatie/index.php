@@ -24,7 +24,7 @@ $this->load->view(
 		<div class="row">
 		<div class="col-12 text-center "><h4><?=$key;?></h4><hr></div>
 		<?php foreach($value as $meniu){ ?>
-			<div class="col-md-3 text-center border border-left-0 border-right-0 rounded mb-4">
+			<div class="col-md-3 text-center border border-left-0 border-right-0 rounded mb-4" style="">
 				<h5><?=$meniu->meniu_nume;?></h5>
 				<img src="<?=$meniu->meniu_avatar?$meniu->meniu_avatar:'/files/images/poza_meniu.png'?>" width="100%"><hr>
 				<div class="row">
@@ -35,11 +35,14 @@ $this->load->view(
 					<div class="col-md-12 display-4">
 						<button class="btn btn-success btn-block" onclick='add_to_cart(`<?=json_encode($meniu);?>`)'>Adauga</button>
 					</div>
-					<div class="col-md-6 ">
+					<div class="col-md-6 ">	
 					
 					</div>
 					<div class="col-12">
-						<small><strong>Ingrediente</strong><br><?=$meniu->meniu_ingrediente;?></small>
+						<small><strong>Descriere :</strong><br><?=$meniu->meniu_descriere;?></small>
+					</div>
+					<div class="col-12">
+						<small><strong>Ingrediente :</strong><br><?=$meniu->meniu_ingrediente;?></small>
 					</div>
 				</div>
 				

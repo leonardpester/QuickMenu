@@ -14,11 +14,21 @@ class Aplicatie_model extends APP_Model
      *
      * @return object
      **/
+    
     public function getAllMenus()
     {
         $var = $this->db
             ->select('*')
             ->from('meniuri');
+             return $var->get()->result();
+
+    }
+
+    public function getAllProduct()
+    {
+        $var = $this->db
+            ->select('*')
+            ->from('produse');
              return $var->get()->result();
 
     }
@@ -48,6 +58,4 @@ class Aplicatie_model extends APP_Model
         return $this->db->where('produs_id', $produs_id)->update('produse', $data);
     }
 
-    
-   
 }

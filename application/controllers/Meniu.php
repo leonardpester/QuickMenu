@@ -9,7 +9,7 @@ class Meniu extends CI_Controller {
 		$this->load->database();
         $this->load->model('meniu_model');
         $this->load->model('aplicatie_model');
-         $this->load->model('produse_model');
+        $this->load->model('produse_model');
         $this->load->library('form_validation');
         $this->load->library('upload');
         $this->load->helper("security");
@@ -61,21 +61,16 @@ class Meniu extends CI_Controller {
                 'meniu_ingrediente'   =>implode(",",$this->input->post('meniu_ingrediente'))
         );
         
-        // try to insert source
+        // try to insert menu
         if ($meniu_id = $this->meniu_model->insertMenu($data)) {
         
-            //if insert ok push success error and redirect to sources list;
-         
+            //if insert ok push success error and redirect to menu list;
             header('Location: '.$this->config->item('base_url').'index.php/meniu/meniu');
         } else {
-            //if insert error push danger error and redirect to sources list;
+            //if insert error push danger error and redirect to menu list;
             header('Location: '.$this->config->item('base_url').'index.php/meniu/addAction');
         }
-   
-
     }
-
-  
 
     public function edit($meniu_id)
     {
@@ -95,7 +90,6 @@ class Meniu extends CI_Controller {
 
     public function editAction()
     {
-        
         $this->form_validation->set_rules('meniu_nume',  'Nume produs', 'required'); 
         $this->form_validation->set_rules('meniu_descriere',  'Nume produs', 'required'); 
         $this->form_validation->set_rules('meniu_pret',  'Nume produs', 'required'); 
@@ -112,7 +106,6 @@ class Meniu extends CI_Controller {
           );
         } else {
           
-            
             $data = array(
                 'meniu_nume'          =>$this->input->post('meniu_nume'),
                 'meniu_descriere'     =>$this->input->post('meniu_descriere'),
@@ -130,7 +123,7 @@ class Meniu extends CI_Controller {
         }
     }
 
-    //delete product
+    //delete menu
     public function delete($meniu_id)
     {
         if ($this->meniu_model->deleteMenu($meniu_id)) {
@@ -138,10 +131,5 @@ class Meniu extends CI_Controller {
         } else {
             echo 'Fail';
         }
-     
     }
-
-   
-
-
 }
