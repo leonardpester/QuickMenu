@@ -11,7 +11,7 @@ $this->load->view(
   );
 ?>
 <!DOCTYPE html>
-<script src="./src/bootstrap-input-spinner.js"></script>
+
 <html lang="en">
 
 <body>

@@ -4,11 +4,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->view(
     'layout/header',
     [
-      'assetsNamespace' => 'Welcomeee',
-      'pageTitle' => 'Welcome',
+      	'assetsNamespace' => 'Welcomeee',
+      	'pageTitle' => 'Welcome',
         'requireJs'=>['libs/jquery.dataTables.min.js','libs/dataTables.fixedHeader.min.js'],
         'requireCSS'=>['libs/jquery.dataTables.min.css','libs/fixedHeader.dataTables.min.css'],
-        'hidemenu' => false,
+    	'hidemenu' => false,
     ]
   );
 
@@ -19,7 +19,6 @@ $this->load->view(
 	
 </head>
 <body background="./files/images/body.jpg">
-  	
 	<div style="background-color:white; width: 85%; margin-right: auto;margin-left: auto;height: 100vh">	
 	<br>
 		<div class="container text-center">
@@ -34,7 +33,7 @@ $this->load->view(
 					<small>Daca selectati optiunea 'Aplicatie' comanda dumneavoastra va fi preluata in mod electronic fara a necesita venirea unui chelner pentru a va fi solicitata comanda.<small>
 					<br><br><br>
 					<p>
-						<a id="chelner" class="btn btn-danger" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/chelner/index/'; ?>'>
+						<a id="chelner" class="btn btn-danger mb-4" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/chelner/index/'; ?>'>
 							<br />
 							<i class="fa fa-male fa-5x"></i>
 							<br />
@@ -42,7 +41,7 @@ $this->load->view(
 							Chelner
 							<br />
 						</a>
-						<a id="aplicatie" class="btn btn-warning" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/aplicatie/index/'; ?>'>
+						<a id="aplicatie" class="btn btn-warning mb-4" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/aplicatie/index/'; ?>'>
 							<br />
 							<i class="fa fa-tablet fa-5x"></i>
 							<br />
@@ -58,10 +57,5 @@ $this->load->view(
 		<div align="center">
 			 <img src="<?=$this->config->item('base_url')?>files/images/welcome.png" width="30%">
 		</div>
-	
-
-
-
 </body>
 </html>
-<?php $this->load->view('layout/footer'); ?>

@@ -18,7 +18,7 @@ $this->load->view(
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
 
 <body background="<?=$this->config->item('base_url')?>/files/images/body.jpg">
-<div style="background-color:white; width: 85%; margin-right: auto;margin-left: auto;height: 100vh;padding:20px;";>
+<div style="background-color:white; width: 85%; margin-right: auto;margin-left: auto;height: 100%;padding:20px;";>
   <div class="page-header">
     <h1>Meniuri</h1>
   </div>

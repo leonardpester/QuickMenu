@@ -13,23 +13,24 @@ $this->load->view(
   );
 ?>
   
-<div class="container-fluid">
+<div class="container-fluid" >
 	
-	
+
 	<?php
 	
 	$i=0;
 	foreach($meniuri as $key=>$value){ if(count($value)<=0) continue; $categories[]=$key;?>
-	<div id="categorie_<?=$key;?>" class="catContainer mb-5" style="<?=$i?'display:none':'';?>">
+	<div id="categorie_<?=$key;?>" class="catContainer mb-5" style="<?=$i?'display:none':'';?>" >
 		<div class="row">
-		<div class="col-12 text-center "><h4><?=$key;?></h4><hr></div>
+		<div class="col-12 text-center" ><br><h3><?=strtoupper (str_replace("_"," ",$key));?></h3><hr></div>
 		<?php foreach($value as $meniu){ ?>
-			<div class="col-md-3 text-center border border-left-0 border-right-0 rounded mb-4" style="">
-				<h5><?=$meniu->meniu_nume;?></h5>
+			<div class="col-md-2 text-center border border-left-1 border-right-1 rounded mb-4 " >
+				<br>
+				<h5><?=strtoupper ($meniu->meniu_nume);?></h5>
 				<img src="<?=$meniu->meniu_avatar?$meniu->meniu_avatar:'/files/images/poza_meniu.png'?>" width="100%"><hr>
 				<div class="row">
-					<div class="col-md-12 display-4">
-						<strong><?=$meniu->meniu_pret;?> LEI</strong>
+					<div class="col-md-12 display-5">
+						<strong><p><?=$meniu->meniu_pret;?> LEI</p></strong>
 					</div>
 					
 					<div class="col-md-12 display-4">
@@ -45,7 +46,7 @@ $this->load->view(
 						<small><strong>Ingrediente :</strong><br><?=$meniu->meniu_ingrediente;?></small>
 					</div>
 				</div>
-				
+				<br>
 			</div>
 		<?php }?>
 		</div>
@@ -111,4 +112,3 @@ $this->load->view(
  
  
 </script>
-<?php //$this->load->view('layout/footer'); ?>
