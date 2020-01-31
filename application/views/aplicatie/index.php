@@ -14,16 +14,17 @@ $this->load->view(
 ?>
   
 <div class="container-fluid" >
+	
 	<div class="row">
-	<div class="col-2 "  style="border-right:2px solid gray;">
+	<div class="col-2" style="height:100%%;border-right:2px solid gray;background-color:#343a40">
 	<br>
-	<h6>Categorii de produse</h6>
+	<h6 class="text-center" style="color:white"><strong>Categorii de produse</strong></h6>
 	<br><br>
 	<?php
 	$i=0;
 	foreach($meniuri as $key=>$value){ if(count($value)<=0) continue;
 	?>
-	<button onclick="go_to_category(<?=$i;?>)" class="btn btn-primary btn-block " <?=$i===0?'disabled':''?> id="btn_<?=$key;?>"><?=$key?></button><br>
+	<button onclick="go_to_category(<?=$i;?>)" class="btn btn-primary btn-block " <?=$i===0?'disabled':''?> id="btn_<?=$key;?>"><?=ucfirst(str_replace("_"," ",$key))?></button><br>
 	<?php
 	$i++;
 	}
@@ -37,28 +38,34 @@ $this->load->view(
 	foreach($meniuri as $key=>$value){ if(count($value)<=0) continue; $categories[]=$key;?>
 	<div id="categorie_<?=$key;?>" class="catContainer mb-5" style="<?=$i?'display:none':'';?>">
 		<div class="row">
-		<div class="col-12 text-center "><h4><?=$key;?></h4><hr></div>
+		<div class="col-12 text-center "><br><h3><?=strtoupper(str_replace("_"," ",$key));?></h3><hr></div>
+		
 		<?php foreach($value as $meniu){ ?>
-			<div class="col-md-2 text-center border border-left-0 border-right-0 rounded mb-4">
-				<h5><?=$meniu->meniu_nume;?></h5>
-				<img src="<?=$meniu->meniu_avatar?$meniu->meniu_avatar:'/files/images/poza_meniu.png'?>" width="100%"><hr>
+		<div class="col-md-2 text-center border border-left-0 border-right-0 border-top-0 border-bottom-0 rounded mb-3">
+			<div class="text-center border border-1 rounded " style="margin-left:-10px;margin-right:-10px;background-color:			rgb(245,245,245)">
+				<img src="<?=$meniu->meniu_avatar?$meniu->meniu_avatar:'/files/images/poza_meniu.png'?>" width="100%">
+				
+				<h5><br><strong><?=$meniu->meniu_nume;?></strong></h5>
 				<div class="row">
-					<div class="col-md-12 display-4">
+					<div class="col-md-12 ">
 						<strong><?=$meniu->meniu_pret;?> LEI</strong>
 					</div>
 					
-					<div class="col-md-12 display-4">
+					<div class="col-md-12">
 						<button class="btn btn-success btn-block" onclick='add_to_cart(`<?=json_encode($meniu);?>`)'>Adauga</button>
 					</div>
 					<div class="col-md-6 ">
 
 					</div>
-					<div class="col-12">
-					<small><strong>Ingrediente</strong><br><?=$meniu->meniu_ingrediente;?></small>
+					<div class="col-12 pb-2">
+					<small><strong>Descriere</strong><br><?=$meniu->meniu_descriere;?></small>
+					
 					</div>
+					
 				</div>
 
 			</div>
+		</div>
 		<?php }?>
 		</div>
 	</div>
