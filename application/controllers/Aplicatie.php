@@ -19,6 +19,18 @@ class Aplicatie extends APP_Controller
         $this->list();
     }
 
+    public function sendOrder()
+	{
+		$table=$this->input->post('table');
+		$cart=$this->input->post('cart');
+
+
+
+		//if everything ok(order added and other actions) echo 1;
+		echo 1;
+		die();
+	}
+
     //get all produs
     public function list()
     {
