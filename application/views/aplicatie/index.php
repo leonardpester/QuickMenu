@@ -198,14 +198,17 @@ $this->load->view(
 			 i++;
 	 }
 	  $('#cart_details').html(i +' produse in cos ('+ t +' lei)');
+	  cartTotal=t;
 
  }
 
  function go_to_category(cat)
  {
-	 console.log(cat);
+
+	 $('.catContainer').hide();
 	$('.btn').prop('disabled',false);
 	currentCategory=cat;
+	console.log(categories[currentCategory]);
 	 $('#categorie_'+categories[currentCategory-1]).hide();
 	 $('#categorie_'+categories[currentCategory]).show();
 
