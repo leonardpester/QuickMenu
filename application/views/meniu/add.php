@@ -16,7 +16,8 @@ $this->load->view(
 <script src="./src/bootstrap-input-spinner.js"></script>
 <html lang="en">
 
-<body>
+<body style="background-color:#e5e6e1">
+<div class="shadow p-3 mb-2 mt-2 bg-white rounded" style="background-color:white; width: 60%; margin-right: auto;margin-left: auto;height: 100%">
 <div class="page-header">
     <h1>Adauga un meniu</h1>
   </div>
@@ -78,7 +79,7 @@ $this->load->view(
         <a href="<?php echo $this->config->item('base_url').'index.php/admin/list'; ?>" class='btn btn-danger'>Renunta</a>
     </div>
 
-  
+</div>
 </div>
 </form>
 </body>

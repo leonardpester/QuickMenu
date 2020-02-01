@@ -16,7 +16,8 @@ $this->load->view(
 <script src="./src/bootstrap-input-spinner.js"></script>
 <html lang="en">
 
-<body>
+<body style="background-color:#e5e6e1">
+<div class="shadow p-3 mb-2 mt-2 bg-white rounded" style="background-color:white; width: 60%; margin-right: auto;margin-left: auto;height: 100%">
 <div class="page-header">
     <h1>Editeaza un meniu</h1>
   </div>
@@ -56,10 +57,18 @@ $this->load->view(
               ?>
             </select>
             <span class="label_error">&nbsp;</span>  </div>
-    
+  
     <div class="form-group col-md-4 ">
         <label for="meniu_categorie">Categorie meniu</label>
-        <input type="number" class="form-control" id="meniu_categorie" name="meniu_categorie" value="<?php echo ($post) ? set_value('meniu_categorie') : $meniu->meniu_categorie; ?>" >
+        <select class="form-control" id="meniu_categorie" name="meniu_categorie" >
+            <?php    
+            foreach ($categorii as $categorie) {
+            ?>
+            <option value="<?=$meniu->meniu_categorie; ?>" <?= in_array($meniu->meniu_categorie,$categorii) ? 'selected' : ''; ?>><?=$meniu->categorie_nume?></option>
+            <?php
+            }
+            ?>
+        </select>
     </div>
 
     <div class="form-group col-md-12 ">
@@ -72,7 +81,7 @@ $this->load->view(
         <a href="<?php echo $this->config->item('base_url').'index.php/admin/list'; ?>" class='btn btn-danger'>Renunta</a>
     </div>
 
-  
+</div>
 </div>
 </form>
 </body>

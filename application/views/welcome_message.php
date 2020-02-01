@@ -18,9 +18,8 @@ $this->load->view(
 <head>
 	
 </head>
-<body background="./files/images/body.jpg">
-	<div style="background-color:white; width: 85%; margin-right: auto;margin-left: auto;height: 100vh">	
-	<br>
+<body style="background-color:#e5e6e1">
+	<div class="shadow p-3 mb-2 mt-2 bg-white rounded" style="width: 60%; margin-right: auto;margin-left: auto;height: 100%;">	
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-12">
@@ -53,7 +52,7 @@ $this->load->view(
 				</div>
 			</div>
 		</div>
-		<br><br>
+		
 		<div align="center">
 			 <img src="<?=$this->config->item('base_url')?>files/images/welcome.png" width="30%">
 		</div>

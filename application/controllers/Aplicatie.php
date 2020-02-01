@@ -21,19 +21,39 @@ class Aplicatie extends APP_Controller
 
     public function sendOrder()
 	{
-		$table=$this->input->post('table');
-		$cart=$this->input->post('cart');
-        
-		//if everything ok(order added and other actions) echo 1;
-		echo 1;
-		die();
+		$comanda_masa = $this->input->post('table');
+        $cart = $this->input->post('cart');
+        $comanda_total_pret = 0;
+        $comanda_meniu = [];
+     
+        foreach($cart as $key=>$x){
+            $meniu=json_decode($x);
+            $comanda_total_pret+=(int)$meniu->meniu_pret;
+            $comanda_meniu[$key]=$meniu->meniu_nume;
+           
+        }
+
+        $data = [
+            'comanda_comanda'       => json_encode($comanda_meniu),
+            'comanda_masa'          => $comanda_masa,
+            'comanda_total_pret'    => $comanda_total_pret
+        ];
+      
+       
+
+        //if everything ok(order added and other actions) echo 1;
+        if($this->aplicatie_model->insertComanda($data)){
+            echo 1;
+		    die();
+        }
+		
 	}
 
-    //get all produs
+    //get all products
     public function list()
     {
          $meniuri=$this->aplicatie_model->getAllMenus();
-         //when 0 produs
+         //when 0 product
          if(!$meniuri) {
              $meniuri = array();
          }
@@ -53,8 +73,7 @@ class Aplicatie extends APP_Controller
         ];
         
         foreach($meniuri as $key=>$menu){
-            
-
+    
             switch ($menu->meniu_categorie) {
             case '1':
                 $meniu['mic_dejun'][$key] = $menu;
@@ -105,5 +124,4 @@ class Aplicatie extends APP_Controller
             ]
         );
     }
-
 }

@@ -18,18 +18,17 @@ $this->load->view(
 <head>
 	
 </head>
-<body background="<?=$this->config->item('base_url')?>/files/images/body.jpg">
-<div style="background-color:white; width: 85%; margin-right: auto;margin-left: auto;height: 100vh">
+<body style="background-color:#e5e6e1">
+<div class="shadow p-3 mb-2 mt-2 bg-white rounded" style="background-color:white; width: 60%; margin-right: auto;margin-left: auto;height: 100%">
 <br>
   <div align="center">
     <div class="row">
       <div class="col-lg-12">
-        <div class="alert alert-info" align="center" style="margin-right: 20%;margin-left: 20%;">
+        <div class="alert alert-info" align="center" style="margin:auto;">
           <p><strong>Info!</strong> Ati ales optiunea 'Chelner'</p>
           <p>Un chelner se indreapta spre dumneavoastra !</p>
         </div>
         <br>
-        
         <br>
         <div >
           <img src="<?=$this->config->item('base_url')?>files/images/chelner.png" width="40%">
@@ -39,7 +38,7 @@ $this->load->view(
       </div>
     </div>
   </div>
-
+<br><br>  
 </body>
 </html>
 <script>
@@ -52,4 +51,3 @@ var timeleft = 10;
     }
   }, 1000);
 </script>
-<?php $this->load->view('layout/footer'); ?>

@@ -74,6 +74,7 @@ class Meniu extends CI_Controller {
 
     public function edit($meniu_id)
     {
+        $categorii=$this->meniu_model->getAllCategory();
         $meniu=$this->meniu_model->getMenuById($meniu_id);
         $produse=$this->aplicatie_model->getAllProduct();
         if(!$meniu){
@@ -84,7 +85,7 @@ class Meniu extends CI_Controller {
         $produseMeniu = explode(",",$this->meniu_model->getProductByMenu($meniu_id));
         $this->load->view(
             'meniu/edit.php',
-            ['meniu' => $meniu,'produseMeniu' => $produseMeniu,'produse' => $produse, 'post' => 0]
+            ['meniu' => $meniu,'produseMeniu' => $produseMeniu,'produse' => $produse, 'post' => 0, 'categorii' => $categorii]
           );
     }
 

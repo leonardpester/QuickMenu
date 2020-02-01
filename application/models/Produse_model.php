@@ -13,7 +13,6 @@ class Produse_model extends APP_Model
     {
         return $this->db->select('*')->from('produse')->where('produs_id', $produs_id)->get()->row();
     }
-
     
     public function updateProduct(int $produs_id, array $data)
     {
@@ -30,7 +29,4 @@ class Produse_model extends APP_Model
         return $this->db->where('produs_id', $produs_id)->delete('produse');
         
     }
-
-   
-   
 }

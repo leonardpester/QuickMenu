@@ -16,7 +16,7 @@ $this->load->view(
 <div class="container-fluid" >
 	
 	<div class="row">
-	<div class="col-2" style="height:100%%;border-right:2px solid gray;background-color:#343a40">
+	<div class="col-2 text-center shadow " style="margin-bottom:0px; solid gray;background-color:#707078">
 	<br>
 	<h6 class="text-center" style="color:white"><strong>Categorii de produse</strong></h6>
 	<br><br>
@@ -24,13 +24,13 @@ $this->load->view(
 	$i=0;
 	foreach($meniuri as $key=>$value){ if(count($value)<=0) continue;
 	?>
-	<button onclick="go_to_category(<?=$i;?>)" class="btn btn-primary btn-block " <?=$i===0?'disabled':''?> id="btn_<?=$key;?>"><?=ucfirst(str_replace("_"," ",$key))?></button><br>
+	<button onclick="go_to_category(<?=$i;?>)" class="btn btn-block " style="background-color:#f47844;color:white" <?=$i===0?'disabled':''?> id="btn_<?=$key;?>"><?=ucfirst(str_replace("_"," ",$key))?></button><br>
 	<?php
 	$i++;
 	}
 	?>
 	</div>
-	<div class="col-10">
+	<div class="col-10" style="background-color:#e5e6e1">
 
 	<?php
 	
@@ -38,32 +38,34 @@ $this->load->view(
 	foreach($meniuri as $key=>$value){ if(count($value)<=0) continue; $categories[]=$key;?>
 	<div id="categorie_<?=$key;?>" class="catContainer mb-5" style="<?=$i?'display:none':'';?>">
 		<div class="row">
-		<div class="col-12 text-center "><br><h3><?=strtoupper(str_replace("_"," ",$key));?></h3><hr></div>
+		<div class="col-12 text-center shadow mb-5" style="background-color:#e5e6e1"><br><h3><?=strtoupper(str_replace("_"," ",$key));?></h3><br></div>
 		
 		<?php foreach($value as $meniu){ ?>
-		<div class="col-md-2 text-center border border-left-0 border-right-0 border-top-0 border-bottom-0 rounded mb-3">
-			<div class="text-center border border-1 rounded " style="margin-left:-10px;margin-right:-10px;background-color:			rgb(245,245,245)">
+		<div class="col-md-3 text-center border border-left-0 border-right-0 border-top-0 border-bottom-0 rounded mb-5">
+			<div class="shadow mb-2 mt-2 text-center border border-1 rounded " style="margin-left:20px;margin-right:20px;background-color:	rgb(245,245,245);">
 				<img src="<?=$meniu->meniu_avatar?$meniu->meniu_avatar:'/files/images/poza_meniu.png'?>" width="100%">
 				
 				<h5><br><strong><?=$meniu->meniu_nume;?></strong></h5>
 				<div class="row">
+	
 					<div class="col-md-12 ">
 						<strong><?=$meniu->meniu_pret;?> LEI</strong>
+						<br>
+						<br>
 					</div>
 					
-					<div class="col-md-12">
-						<button class="btn btn-success btn-block" onclick='add_to_cart(`<?=json_encode($meniu);?>`)'>Adauga</button>
+					<div class="col-md-12 pr-4 pl-4"> 
+						<button class="btn btn-block" style="background-color:#f47844;color:white" onclick='add_to_cart(`<?=json_encode($meniu);?>`)'>Adauga</button>
 					</div>
+
 					<div class="col-md-6 ">
-
 					</div>
+
 					<div class="col-12 pb-2">
-					<small><strong>Descriere</strong><br><?=$meniu->meniu_descriere;?></small>
-					
+						<small><strong>Descriere</strong><br><?=$meniu->meniu_descriere;?></small>
 					</div>
 					
-				</div>
-
+				</div><br>
 			</div>
 		</div>
 		<?php }?>
@@ -76,15 +78,15 @@ $this->load->view(
 	</div>
 </div>
 <nav class="navbar fixed-bottom navbar-light bg-dark">
- <div class="col-3">
+ <div class="col-4">
  <button class="btn btn-primary" disabled id="btn_prev" onclick="prev_cat()"> << Inapoi</button>
  </div>
- <div class="col-3 text-center text-white" id="open_cart" data-toggle="modal" data-target="#myModal">
+ <div class="col-4 text-center text-white" id="open_cart" data-toggle="modal" data-target="#myModal">
 <a href="JavaScript: void(0);"><span id='cart_details'> 0 produse in cos(0 lei)</span></a>
 
  </div>
-  <div class="col-3 text-right">
- <button class="btn btn-primary" onclick="next_cat()" id="btn_next"> Inainte (<?=$categories[1];?>)</button>
+  <div class="col-4 text-right">
+ <button class="btn btn-primary" onclick="next_cat()" id="btn_next"> Inainte</button>
  </div>
 </nav>
 
@@ -153,11 +155,11 @@ $this->load->view(
 	 $('#categorie_'+categories[currentCategory]).hide();
 	 $('#categorie_'+categories[currentCategory+1]).show();
 	 if(maxCat>(currentCategory+2)){
-		$('#btn_next').html("Inainte ("+categories[currentCategory+2]+")");
-	$('#btn_prev').html("Inapoi ("+categories[currentCategory]+")").prop('disabled',false);
+		$('#btn_next').html("Inainte");
+	$('#btn_prev').html("Inapoi").prop('disabled',false);
 		currentCategory++;
 	 }else{
-		 $('#btn_prev').html("Inapoi ("+categories[currentCategory]+")").prop('disabled',false);
+		 $('#btn_prev').html("Inapoi").prop('disabled',false);
 		 $('#btn_next').html("Finalizeaza comanda").removeClass().addClass("btn btn-success").attr('onclick','checkout()');
 		currentCategory++;
 	} 
@@ -170,12 +172,12 @@ $this->load->view(
 	 $('#categorie_'+categories[currentCategory]).hide();
 	 $('#categorie_'+categories[currentCategory-1]).show();
 	 if((currentCategory-2)>=0){
-		$('#btn_next').html("Inainte ("+categories[currentCategory]+")").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
-		$('#btn_prev').html("Inapoi ("+categories[currentCategory-2]+")").prop('disabled',false);
+		$('#btn_next').html("Inainte").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
+		$('#btn_prev').html("Inapoi").prop('disabled',false);
 		currentCategory--;
 	 }else{
-		 $('#btn_prev').html("Inapoi ").prop('disabled',true);
-		 $('#btn_next').html("Inainte ("+categories[currentCategory]+")").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
+		 $('#btn_prev').html("Inapoi").prop('disabled',true);
+		 $('#btn_next').html("Inainte").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
 		 currentCategory--;
 	 } 
 
@@ -221,14 +223,14 @@ $this->load->view(
 
 	 if(maxCat==(currentCategory+1)){
 		$('#btn_next').html("Finalizeaza comanda").removeClass().addClass("btn btn-success").attr('onclick','checkout()');
-		$('#btn_prev').html("Inapoi ("+categories[currentCategory-1]+")").prop('disabled',false);
+		$('#btn_prev').html("Inapoi").prop('disabled',false);
 
 	 }else if(currentCategory==0){
 		$('#btn_prev').html("Inapoi ").prop('disabled',true);
-		$('#btn_next').html("Inainte ("+categories[currentCategory+1]+")").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
+		$('#btn_next').html("Inainte").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
 	}else{
-	$('#btn_prev').html("Inapoi ("+categories[currentCategory-1]+")").prop('disabled',false);
-	$('#btn_next').html("Inainte ("+categories[currentCategory+1]+")").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
+	$('#btn_prev').html("Inapoi").prop('disabled',false);
+	$('#btn_next').html("Inainte").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
 	}	
 
 	$('#btn_'+categories[currentCategory]).prop('disabled',true);

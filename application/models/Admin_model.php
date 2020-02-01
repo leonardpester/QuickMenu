@@ -9,11 +9,6 @@ class Admin_model extends APP_Model
         parent::__construct();
     }
 
-    /**
-     * Get all the sources from the database.
-     *
-     * @return object
-     **/
     public function getPassword()
     {
         $var = $this->db
@@ -22,7 +17,4 @@ class Admin_model extends APP_Model
              return $var->get()->result();
 
     }
-
-    
-   
 }

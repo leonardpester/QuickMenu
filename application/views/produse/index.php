@@ -18,8 +18,8 @@ $this->load->view(
 <head>
 	
 </head>
-<body background="<?=$this->config->item('base_url')?>/files/images/body.jpg">
-<div style="background-color:white; width: 85%; margin-right: auto;margin-left: auto;height: 100vh">
+<body style="background-color:#e5e6e1">
+<div class="shadow p-3 mb-2 mt-2 bg-white rounded" style="background-color:white; width: 60%; margin-right: auto;margin-left: auto;height: 100%">
 <br>
     <div align="center">
         <strong>Produse</strong>
@@ -27,4 +27,3 @@ $this->load->view(
 </div>
 </body>
 </html>
-<?php $this->load->view('layout/footer'); ?>

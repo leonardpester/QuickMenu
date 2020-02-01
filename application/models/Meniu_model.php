@@ -9,12 +9,15 @@ class Meniu_model extends APP_Model
         parent::__construct();
     }
 
-
     public function getMenuById(int $meniu_id)
     {
-        return $this->db->select('*')->from('meniuri')->where('meniu_id', $meniu_id)->get()->row();
+        return $this->db->select('m.*,c.categorie_nume')
+            ->from('meniuri m')
+            ->join('categorie c','m.meniu_categorie=c.categorie_id','LEFT')
+            ->where('meniu_id', $meniu_id)
+            ->get()
+            ->row();
     }
-
     
     public function updateMenu(int $meniu_id, array $data)
     {
@@ -29,10 +32,9 @@ class Meniu_model extends APP_Model
     public function deleteMenu(int $meniu_id)
     {
         return $this->db->where('meniu_id', $meniu_id)->delete('meniuri');
-        
     }
 
-     public function getAllMenus()
+    public function getAllMenus()
     {
         $var = $this->db
             ->select('m.*,c.categorie_nume')
@@ -40,8 +42,7 @@ class Meniu_model extends APP_Model
             ->join('categorie c','m.meniu_categorie=c.categorie_id','LEFT')
             ->order_by('meniu_id', 'DESC');
 
-             return $var->get()->result();
-
+        return $var->get()->result();
     }
     
     public function getProductByMenu($meniu_id){
@@ -51,19 +52,15 @@ class Meniu_model extends APP_Model
             ->where('meniu_id',$meniu_id)
             ->get()
             ->row();
-            return $var->meniu_ingrediente;
-             
+        return $var->meniu_ingrediente;
     }
 
     public function getAllCategory(){
-         $var = $this->db
+        $var = $this->db
             ->select('*')
             ->from('categorie')
             ->get()
             ->result();
-            return $var;
+        return $var;
     }
-
-   
-   
 }

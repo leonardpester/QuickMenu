@@ -8,12 +8,6 @@ class Aplicatie_model extends APP_Model
     {
         parent::__construct();
     }
-
-    /**
-     * Get all the sources from the database.
-     *
-     * @return object
-     **/
     
     public function getAllMenus()
     {
@@ -33,29 +27,19 @@ class Aplicatie_model extends APP_Model
 
     }
 
-    /**
-     * Get offer's informations by ID.
-     *
-     * @param int oferta_id The id of the offer
-     *
-     * @return object
-     **/
     public function getProductById(int $produs_id)
     {
         return $this->db->select('*')->from('produse')->where('produs_id', $produs_id)->get()->row();
     }
 
-    /**
-     * Update an offer ( based on oferta_id ) with the new data.
-     *
-     * @param int oferta_id The id of the offer
-     * @param array data Array of the data ( column => value )
-     *
-     * @return object
-     **/
     public function updateProduct(int $produs_id, array $data)
     {
         return $this->db->where('produs_id', $produs_id)->update('produse', $data);
+    }
+
+    public function insertComanda(array $data)
+    {
+        return $this->db->insert('comenzi', $data) ? $this->db->insert_id() : false;
     }
 
 }

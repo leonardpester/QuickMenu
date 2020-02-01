@@ -61,7 +61,7 @@ if (isset($requireCSS) && is_array($requireCSS) && count($requireCSS) > 0) {
 
 <div id="loader" ></div>
 <?php if (!$hidemenu) { ?>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">QuickMenu</a>
   </nav>
 <?php } ?>

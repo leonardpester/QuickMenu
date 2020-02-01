@@ -17,8 +17,8 @@ $this->load->view(
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
 
-<body background="<?=$this->config->item('base_url')?>/files/images/body.jpg">
-<div style="background-color:white; width: 85%; margin-right: auto;margin-left: auto;height: 100%;padding:20px;";>
+<body style="background-color:#e5e6e1">
+<div class="shadow p-3 mb-2 mt-2 bg-white rounded" style="background-color:white; width: 60%; margin-right: auto;margin-left: auto;height: 100%">
   <div class="page-header">
     <h1>Meniuri</h1>
   </div>
@@ -239,4 +239,3 @@ $(document).ready(function() {
     }
   }
 </style>
-<?php $this->load->view('layout/footer'); ?>
