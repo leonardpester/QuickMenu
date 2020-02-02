@@ -19,11 +19,10 @@ $this->load->view(
 	
 </head>
 <body style="background-color:#e5e6e1">
-<div class="shadow p-3 mb-2 mt-2 bg-white rounded" style="background-color:white; width: 60%; margin-right: auto;margin-left: auto;height: 100vh">
+<div class="shadow p-3 mb-2 mt-2 bg-white rounded" style="background-color:white; width: 60%; margin-right: auto;margin-left: auto;height: 100%">
   <div align="center">
-  <br>
-
-  <div class="alert alert-danger" align="center" style="margin-right: 25%;margin-left: 25%;">
+  
+  <div class="shadow p-3 rounded  bg-yellow" style="background-color:#f86d71;color:white" align="center" style="margin-right: 25%;margin-left: 25%;">
  	 <h3>Panoul administratorului</h3>
   </div>
   <div class="container text-center">

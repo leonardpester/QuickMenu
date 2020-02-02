@@ -43,7 +43,7 @@ $this->load->view(
 		<?php foreach($value as $meniu){ ?>
 		<div class="col-md-3 text-center border border-left-0 border-right-0 border-top-0 border-bottom-0 rounded mb-5">
 			<div class="shadow mb-2 mt-2 text-center border border-1 rounded " style="margin-left:20px;margin-right:20px;background-color:	rgb(245,245,245);">
-				<img src="<?=$meniu->meniu_avatar?$meniu->meniu_avatar:'/files/images/poza_meniu.png'?>" width="100%">
+				<img src="<?=$meniu->meniu_avatar?$meniu->meniu_avatar:'/files/images/chelner.png'?>" width="100%">
 				
 				<h5><br><strong><?=$meniu->meniu_nume;?></strong></h5>
 				<div class="row">
@@ -79,14 +79,14 @@ $this->load->view(
 </div>
 <nav class="navbar fixed-bottom navbar-light bg-dark">
  <div class="col-4">
- <button class="btn btn-primary" disabled id="btn_prev" onclick="prev_cat()"> << Inapoi</button>
+ <button class="btn" style="background-color:#f47844;color:white" disabled id="btn_prev" onclick="prev_cat()"> << Inapoi</button>
  </div>
  <div class="col-4 text-center text-white" id="open_cart" data-toggle="modal" data-target="#myModal">
 <a href="JavaScript: void(0);"><span id='cart_details'> 0 produse in cos(0 lei)</span></a>
 
  </div>
   <div class="col-4 text-right">
- <button class="btn btn-primary" onclick="next_cat()" id="btn_next"> Inainte</button>
+ <button class="btn" style="background-color:#f47844;color:white" onclick="next_cat()" id="btn_next"> Inainte</button>
  </div>
 </nav>
 
@@ -225,6 +225,9 @@ $this->load->view(
 		$('#btn_next').html("Finalizeaza comanda").removeClass().addClass("btn btn-success").attr('onclick','checkout()');
 		$('#btn_prev').html("Inapoi").prop('disabled',false);
 
+
+
+
 	 }else if(currentCategory==0){
 		$('#btn_prev').html("Inapoi ").prop('disabled',true);
 		$('#btn_next').html("Inainte").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
@@ -253,7 +256,6 @@ $this->load->view(
 	 }else{
 		    $.ajax({
                 url: '/index.php/aplicatie/sendOrder',
-
                 type: 'post',
                 data: {cart:cart,table:$('#nr_table').val()},
                 success: function( data, textStatus, jQxhr ){
@@ -269,4 +271,3 @@ $this->load->view(
 	 }
  }
 </script>
-<?php //$this->load->view('layout/footer'); ?>

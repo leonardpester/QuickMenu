@@ -23,7 +23,8 @@ $this->load->view(
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-12">
-					<h4 align="center"><div class="alert alert-info"> <strong> Bine ati venit, selectati optiunea prin care doriti sa comandati!</strong></div> </h4>
+					<h4 align="center"> <div class="shadow p-4 rounded  bg-yellow" style=" background-color:#f07049;color:white" align="center" style="margin-right: 25%;margin-left: 25%;">
+					<strong> Bine ati venit, selectati optiunea prin care doriti sa comandati!</strong></div> </h4>
 					<br>
 					<small><strong>INFO:</strong></small>
 					<br>

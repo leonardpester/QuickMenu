@@ -20,11 +20,11 @@ $this->load->view(
 </head>
 <body style="background-color:#e5e6e1">
 <div class="shadow p-3 mb-2 mt-2 bg-white rounded" style="background-color:white; width: 60%; margin-right: auto;margin-left: auto;height: 100%">
-<br>
+
   <div align="center">
     <div class="row">
       <div class="col-lg-12">
-        <div class="alert alert-info" align="center" style="margin:auto;">
+      <div class="shadow p-1 rounded  bg-yellow" style="background-color:#6da9ff" align="center" style="margin-right: 25%;margin-left: 25%;">
           <p><strong>Info!</strong> Ati ales optiunea 'Chelner'</p>
           <p>Un chelner se indreapta spre dumneavoastra !</p>
         </div>
@@ -42,7 +42,7 @@ $this->load->view(
 </body>
 </html>
 <script>
-var timeleft = 10;
+  var timeleft = 10;
   var downloadTimer = setInterval(function(){
     document.getElementById("progressBar").value = 10 - timeleft;
     timeleft -= 1;

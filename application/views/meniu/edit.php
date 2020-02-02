@@ -64,7 +64,7 @@ $this->load->view(
             <?php    
             foreach ($categorii as $categorie) {
             ?>
-            <option value="<?=$meniu->meniu_categorie; ?>" <?= in_array($meniu->meniu_categorie,$categorii) ? 'selected' : ''; ?>><?=$meniu->categorie_nume?></option>
+            <option value="<?=$categorie->categorie_id; ?>" <?= ($meniu->meniu_categorie==$categorie->categorie_id) ? 'selected' : ''; ?>><?=$categorie->categorie_nume?></option>
             <?php
             }
             ?>
