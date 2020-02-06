@@ -23,7 +23,7 @@ $this->load->view(
   <div align="center">
   
   <div class="shadow p-3 rounded  bg-yellow" style="background-color:#f86d71;color:white" align="center" style="margin-right: 25%;margin-left: 25%;">
- 	 <h3>Panoul administratorului</h3>
+ 	 <h3>Panoul personalului</h3>
   </div>
   <div class="container text-center">
 			<div class="row" style="height:100%">
@@ -56,7 +56,7 @@ $this->load->view(
 							
 							<br />
 							<br />
-							Meniuri
+							Meniul restaurantului
 							<br />
 						</a>
 						<a id="produse" class="btn btn-dark ml-5 mr-5 mb-3" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/produse/stoc/'; ?>'>
@@ -64,7 +64,7 @@ $this->load->view(
                             <i class="fa fa-cart-plus fa-5x"></i>
 							<br />
 							<br />
-							Produse
+							Ingrediente
 							<br />
 						</a>
 					</p>

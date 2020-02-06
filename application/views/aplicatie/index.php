@@ -41,9 +41,10 @@ $this->load->view(
 		<div class="col-12 text-center shadow mb-5" style="background-color:#e5e6e1"><br><h3><?=strtoupper(str_replace("_"," ",$key));?></h3><br></div>
 		
 		<?php foreach($value as $meniu){ ?>
-		<div class="col-md-3 text-center border border-left-0 border-right-0 border-top-0 border-bottom-0 rounded mb-5">
+		<div class="col-md-3 text-center border border-left-0 border-right-0 border-top-0 border-bottom-0 rounded mb-5" >
 			<div class="shadow mb-2 mt-2 text-center border border-1 rounded " style="margin-left:20px;margin-right:20px;background-color:	rgb(245,245,245);">
-				<img src="<?=$meniu->meniu_avatar?$meniu->meniu_avatar:'/files/images/chelner.png'?>" width="100%">
+				
+				<img src="/files/images/<?=$meniu->meniu_avatar?>" width="100%" height="200px">
 				
 				<h5><br><strong><?=$meniu->meniu_nume;?></strong></h5>
 				<div class="row">
@@ -55,14 +56,16 @@ $this->load->view(
 					</div>
 					
 					<div class="col-md-12 pr-4 pl-4"> 
-						<button class="btn btn-block" style="background-color:#f47844;color:white" onclick='add_to_cart(`<?=json_encode($meniu);?>`)'>Adauga</button>
+						<button class="btn btn-block" style="background-color:#f47844;color:white" onclick='add_to_cart(`<?=json_encode($meniu);?>`)'>Adaugă</button>
 					</div>
 
 					<div class="col-md-6 ">
 					</div>
 
-					<div class="col-12 pb-2">
-						<small><strong>Descriere</strong><br><?=$meniu->meniu_descriere;?></small>
+					<div class="col-12 p-6">
+					<div class="col-md-6 ">
+					</div>
+						<small><strong>Descriere</strong><br><?=$meniu->meniu_ingrediente;?></small>
 					</div>
 					
 				</div><br>
@@ -79,14 +82,14 @@ $this->load->view(
 </div>
 <nav class="navbar fixed-bottom navbar-light bg-dark">
  <div class="col-4">
- <button class="btn" style="background-color:#f47844;color:white" disabled id="btn_prev" onclick="prev_cat()"> << Inapoi</button>
+ <button class="btn" style="background-color:#f47844;color:white" disabled id="btn_prev" onclick="prev_cat()"> << Înapoi</button>
  </div>
  <div class="col-4 text-center text-white" id="open_cart" data-toggle="modal" data-target="#myModal">
-<a href="JavaScript: void(0);"><span id='cart_details'> 0 produse in cos(0 lei)</span></a>
+<a href="JavaScript: void(0);"><span id='cart_details'> 0 produse în coș(0 lei)</span></a>
 
  </div>
   <div class="col-4 text-right">
- <button class="btn" style="background-color:#f47844;color:white" onclick="next_cat()" id="btn_next"> Inainte</button>
+ <button class="btn" style="background-color:#f47844;color:white" onclick="next_cat()" id="btn_next"> Înainte</button>
  </div>
 </nav>
 
@@ -101,7 +104,7 @@ $this->load->view(
 
       </div>
       <div class="modal-body">
-		<h6 class="text-center">Produse din cos</h6>
+		<h6 class="text-center">Produse din coș</h6>
 		<table id="cartProducts" style="width:100%">
 			<thead>
 				<tr>
@@ -155,15 +158,14 @@ $this->load->view(
 	 $('#categorie_'+categories[currentCategory]).hide();
 	 $('#categorie_'+categories[currentCategory+1]).show();
 	 if(maxCat>(currentCategory+2)){
-		$('#btn_next').html("Inainte");
-	$('#btn_prev').html("Inapoi").prop('disabled',false);
+		$('#btn_next').html("Înainte");
+	$('#btn_prev').html("Înapoi").prop('disabled',false);
 		currentCategory++;
 	 }else{
-		 $('#btn_prev').html("Inapoi").prop('disabled',false);
+		 $('#btn_prev').html("Înapoi").prop('disabled',false);
 		 $('#btn_next').html("Finalizeaza comanda").removeClass().addClass("btn btn-success").attr('onclick','checkout()');
 		currentCategory++;
 	} 
-
 	$('#btn_'+categories[currentCategory]).prop('disabled',true);
  }
 
@@ -172,12 +174,12 @@ $this->load->view(
 	 $('#categorie_'+categories[currentCategory]).hide();
 	 $('#categorie_'+categories[currentCategory-1]).show();
 	 if((currentCategory-2)>=0){
-		$('#btn_next').html("Inainte").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
-		$('#btn_prev').html("Inapoi").prop('disabled',false);
+		$('#btn_next').html("Înainte").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
+		$('#btn_prev').html("Înapoi").prop('disabled',false);
 		currentCategory--;
 	 }else{
-		 $('#btn_prev').html("Inapoi").prop('disabled',true);
-		 $('#btn_next').html("Inainte").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
+		 $('#btn_prev').html("Înapoi").prop('disabled',true);
+		 $('#btn_next').html("Înainte").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
 		 currentCategory--;
 	 } 
 
@@ -187,10 +189,10 @@ $this->load->view(
  function add_to_cart(productInfo){
 	 cart.push(productInfo);
 	 productInfo=JSON.parse(productInfo);
-
 	 cartTotal+=parseFloat(productInfo['meniu_pret']);
-	 $('#cart_details').html(cart.length +' produse in cos ('+ cartTotal +' lei)');
-	 $("#cartProducts tbody").append("<tr><td>"+cart.length+"</td><td>"+productInfo['meniu_nume']+"</td><td>"+productInfo['meniu_pret']+"</td><td><i class='fa fa-remove' onclick='remove_product("+(cart.length-1)+")'></i></tr>");
+	 $('#cart_details').html(cart.length +' produse în coș ('+ cartTotal +' lei)');
+	 $("#cartProducts tbody").append("<tr><td>"+cart.length+"</td><td>"+productInfo['meniu_nume']+"</td><td>"+productInfo['meniu_pret']
+	 +"</td><td><i class='fa fa-remove' onclick='remove_product("+(cart.length-1)+")'></i></tr>");
  }
 
 
@@ -206,43 +208,36 @@ $this->load->view(
 		 	 $("#cartProducts tbody").append("<tr><td>"+(i+1)+"</td><td>"+p['meniu_nume']+"</td><td>"+p['meniu_pret']+"</td><td><i class='fa fa-remove' onclick='remove_product("+i+")'></i></tr>");
 			 i++;
 	 }
-	  $('#cart_details').html(i +' produse in cos ('+ t +' lei)');
+	  $('#cart_details').html(i +' produse în coș ('+ t +' lei)');
 	  cartTotal=t;
 
  }
 
  function go_to_category(cat)
  {
-
-	 $('.catContainer').hide();
+	$('.catContainer').hide();
 	$('.btn').prop('disabled',false);
 	currentCategory=cat;
-	console.log(categories[currentCategory]);
 	 $('#categorie_'+categories[currentCategory-1]).hide();
 	 $('#categorie_'+categories[currentCategory]).show();
 
 	 if(maxCat==(currentCategory+1)){
 		$('#btn_next').html("Finalizeaza comanda").removeClass().addClass("btn btn-success").attr('onclick','checkout()');
-		$('#btn_prev').html("Inapoi").prop('disabled',false);
-
-
-
-
+		$('#btn_prev').html("Înapoi").prop('disabled',false);
 	 }else if(currentCategory==0){
-		$('#btn_prev').html("Inapoi ").prop('disabled',true);
-		$('#btn_next').html("Inainte").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
+		$('#btn_prev').html("Înapoi ").prop('disabled',true);
+		$('#btn_next').html("Înainte").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
 	}else{
-	$('#btn_prev').html("Inapoi").prop('disabled',false);
-	$('#btn_next').html("Inainte").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
+		$('#btn_prev').html("Înapoi").prop('disabled',false);
+		$('#btn_next').html("Înainte").removeClass().addClass("btn btn-primary").attr('onclick','next_cat()');
 	}	
-
 	$('#btn_'+categories[currentCategory]).prop('disabled',true);
  }
 
  function checkout()
  {
 	 if(cart.length<=0){
-		 alert('Nu aveti produse in cos!');
+		 alert('Nu aveti produse în coș!');
 	 }else{
 		 $('#open_cart').trigger('click');
 	 }
@@ -250,7 +245,7 @@ $this->load->view(
 
  function send_order(){
 	 	 if(cart.length<=0){
-		 alert('Nu aveti produse in cos!');
+		 alert('Nu aveti produse  coș!');
 	 }else if(!$('#nr_table').val()){
 		alert('Nu ati selectat masa!'); 
 	 }else{

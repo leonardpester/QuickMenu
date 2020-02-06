@@ -41,6 +41,7 @@ $this->load->view(
       <?php
         }
         ?>
+        
 
         <div class="col-md-12 text-center">
             <br><br><br><br>    

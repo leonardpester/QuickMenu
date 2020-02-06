@@ -35,7 +35,7 @@ $this->load->view(
                <th >Nr. Crt.</th>    
               <th >Denumire</th>  
               <th >Cantitate</th> 
-               <th width="150"><a href='<?php echo $this->config->item('base_url').'index.php/produse/adaugaProdus'; ?>'><button class='btn btn-success btn-sm d-block'>Adauga produs</button></a></th>
+               <th width="150"><a href='<?php echo $this->config->item('base_url').'index.php/produse/adaugaProdus'; ?>'><button class='btn btn-success btn-sm d-block'>Adaugă ingredient</button></a></th>
             </tr>
       </thead>
       <tbody>
@@ -49,8 +49,8 @@ $this->load->view(
           <td><?php echo $produs->produs_cantitate;?>g</td>
          
           <th>
-            <a href='<?php echo $this->config->item('base_url').'index.php/produse/edit/'.$produs->produs_id; ?>' ><i class='fa fa-edit' style="font-size:30px;" data-toggle="tooltip" title="Editeaza produsul"></i></a>
-            <a href='<?php echo $this->config->item('base_url').'index.php/produse/delete/'.$produs->produs_id ?>' onclick="return confirm('Sunteti sigur ca doriti sa stergeti acest produs?');"><i class="fa fa-remove" style="font-size:30px;color:red;" data-toggle="tooltip" title="Sterge produsul"></i></a>
+            <a href='<?php echo $this->config->item('base_url').'index.php/produse/edit/'.$produs->produs_id; ?>' ><i class='fa fa-edit' style="font-size:30px;" data-toggle="tooltip" title="Editeaza ingredientul"></i></a>
+            <a href='<?php echo $this->config->item('base_url').'index.php/produse/delete/'.$produs->produs_id ?>' onclick="return confirm('Sunteti sigur ca doriti sa stergeti acest ingredient?');"><i class="fa fa-remove" style="font-size:30px;color:red;" data-toggle="tooltip" title="Sterge produsul"></i></a>
           </th>
       </tr>
       <?php
@@ -64,7 +64,7 @@ $this->load->view(
               <th >Nr. Crt.</th>    
               <th >Denumire</th>  
               <th >Cantitate</th> 
-              <th width="150"><a href='<?php echo $this->config->item('base_url').'index.php/produse/adaugaProdus'; ?>'><button class='btn btn-success btn-sm d-block'>Adauga produs</button></a></th>
+              <th width="150"><a href='<?php echo $this->config->item('base_url').'index.php/produse/adaugaProdus'; ?>'><button class='btn btn-success btn-sm d-block'>Adaugă ingredient</button></a></th>
        
               
         </tr>

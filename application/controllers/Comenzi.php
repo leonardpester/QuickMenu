@@ -8,6 +8,7 @@ class Comenzi extends CI_Controller {
         parent::__construct();
 		$this->load->database();
 		$this->load->model('comenzi_model');
+		$this->load->model('produse_model');
     }
     
 	public function index()
@@ -54,7 +55,8 @@ class Comenzi extends CI_Controller {
 			'total_pret' 	 => $comanda->comanda_total_pret,
 			'masa'		 	 => $comanda->comanda_masa,
 			'comanda_id' 	 => $comanda->comanda_id,
-			'comanda_remove' => $comanda->comanda_remove
+			'comanda_remove' => $comanda->comanda_remove,
+			"comanda_ingrediente" => explode(",",$comanda->comanda_ingrediente)
 		];
 		$this->load->view('comenzi/comanda',[
 			'comanda' => $final
@@ -62,6 +64,25 @@ class Comenzi extends CI_Controller {
 	}
 
 	public function comanda_finalizata($comanda_id){
+		$comanda = $this->comenzi_model->getComandaById($comanda_id);
+		$i = count(explode(",",$comanda->comanda_ingrediente));
+		for($key=0;$key <$i ;$key++){
+			$grame[$key] = $this->input->post("ingredient_".$key);
+		}
+
+
+		foreach(explode(",",$comanda->comanda_ingrediente) as $key=>$ing){
+			//selectez din ingrediente cantitate
+			$grame_din_ingrediente = $this->produse_model->getProductByName($ing);
+			$grame_pentru_update = (int)$grame_din_ingrediente[0]->produs_cantitate - (int)$grame[$key];
+		
+			$produse_cantitate= [
+				'produs_cantitate' => (int)$grame_pentru_update
+			];
+			$update_cantitate = $this->produse_model->updateCantitate($ing,$produse_cantitate);
+		
+
+		}
 		$data = [
 			'comanda_id'	 => $comanda_id,
 			'comanda_remove' => 1	

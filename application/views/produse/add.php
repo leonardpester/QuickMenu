@@ -17,7 +17,7 @@ $this->load->view(
 <body style="background-color:#e5e6e1">
 <div class="shadow p-3 mb-2 mt-2 bg-white rounded" style="background-color:white; width: 60%; margin-right: auto;margin-left: auto;height: 100%">
 <div class="page-header">
-    <h1>Adauga un produs</h1>
+    <h1>Adaugă un ingredient</h1>
   </div>
 
   <form id="addForm" method="POST" action="/index.php/produse/addAction" name="myForm " enctype="multipart/form-data" >
@@ -26,18 +26,18 @@ $this->load->view(
     
 
     <div class="form-group col-md-12">
-        <label for="produs_nume">Nume produs</label>
+        <label for="produs_nume">Nume ingredient</label>
         <input type="text" class="form-control" id="produs_nume" name="produs_nume" value="<?php echo set_value('produs_nume'); ?>" required>
     </div>
 
      <div class="form-group col-md-12 ">
-        <label for="produs_cantitate">Cantitate produs</label>
+        <label for="produs_cantitate">Cantitate ingredient</label>
         <input type="number" class="form-control"   id="produs_cantitate" min="0" max="1000" step="1"  name="produs_cantitate" value="<?php echo set_value('produs_cantitate'); ?>">
     </div>
 
   
     <div class='col-md-12'>
-        <button type="number" class="btn btn-success" value=""  name="action" id="action_btn" >Adauga produs</button>
+        <button type="number" class="btn btn-success" value=""  name="action" id="action_btn" >Adaugă ingredientul</button>
         <a href="<?php echo $this->config->item('base_url').'index.php/admin/list'; ?>" class='btn btn-danger'>Renunta</a>
     </div>
 

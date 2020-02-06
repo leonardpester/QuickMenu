@@ -20,7 +20,7 @@ $this->load->view(
 <body style="background-color:#e5e6e1">
 <div class="shadow p-3 mb-2 mt-2 bg-white rounded" style="background-color:white; width: 60%; margin-right: auto;margin-left: auto;height: 100%">
   <div class="page-header">
-    <h1>Meniuri</h1>
+    <h1>Produse</h1>
   </div>
 
 
@@ -34,11 +34,11 @@ $this->load->view(
         <tr>
             <th >Nr. Crt.</th>    
             <th>Denumire</th>  
-            <th>Descriere</th> 
+         
             <th>Pret</th> 
             <th>Ingrediente</th> 
             <th>Categorie</th> 
-            <th width="150"><a href='<?php echo $this->config->item('base_url').'index.php/meniu/adaugaMeniu'; ?>'><button class='btn btn-primary btn-sm d-block'>Adauga meniu</button></a></th>
+            <th width="150"><a href='<?php echo $this->config->item('base_url').'index.php/meniu/adaugaMeniu'; ?>'><button class='btn btn-success btn-sm d-block'>Adaugă produs</button></a></th>
         </tr>
       </thead>
       <tbody>
@@ -49,7 +49,6 @@ $this->load->view(
       <tr>
           <td><?php echo $i; ?><br >
           <td><?php echo $meniu->meniu_nume; ?></td>
-          <td><?php echo $meniu->meniu_descriere;?></td>
           <td><?php echo $meniu->meniu_pret;?> lei</td>
           <td><?php echo $meniu->meniu_ingrediente;?></td>
           <td><?php echo $meniu->categorie_nume;?></td>     
@@ -68,11 +67,10 @@ $this->load->view(
        <tr>
             <th >Nr. Crt.</th>    
             <th>Denumire</th>  
-            <th>Descriere</th> 
             <th>Pret</th> 
             <th>Ingrediente</th> 
             <th>Categorie</th> 
-            <th width="150"><a href='<?php echo $this->config->item('base_url').'index.php/meniu/adaugaMeniu'; ?>'><button class='btn btn-primary btn-sm d-block'>Adauga meniu</button></a></th>
+            <th width="150"><a href='<?php echo $this->config->item('base_url').'index.php/meniu/adaugaMeniu'; ?>'><button class='btn btn-success btn-sm d-block'>Adaugă produs</button></a></th>
         </tr>
       </tfoot>
 </table>

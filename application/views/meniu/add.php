@@ -19,7 +19,7 @@ $this->load->view(
 <body style="background-color:#e5e6e1">
 <div class="shadow p-3 mb-2 mt-2 bg-white rounded" style="background-color:white; width: 60%; margin-right: auto;margin-left: auto;height: 100%">
 <div class="page-header">
-    <h1>Adauga un meniu</h1>
+    <h1>Adaugă produs</h1>
   </div>
 
   <form id="addForm" method="POST" action="/index.php/meniu/addAction" name="myForm " enctype="multipart/form-data" >
@@ -27,22 +27,19 @@ $this->load->view(
     <div class="row">
     
     <div class="form-group col-md-12">
-        <label for="meniu_nume">Nume meniu</label>
+        <label for="meniu_nume">Nume produs</label>
         <input type="text" class="form-control" id="meniu_nume" name="meniu_nume" value="<?php echo set_value('meniu_nume'); ?>" required>
     </div>
 
-     <div class="form-group col-md-12 ">
-        <label for="meniu_descriere">Descriere meniu</label>
-        <input type="text" class="form-control"   id="meniu_descriere" name="meniu_descriere" value="<?php echo set_value('meniu_descriere'); ?>">
-    </div>
+    
 
     <div class="form-group col-md-4 ">
-        <label for="meniu_pret">Pret</label>
+        <label for="meniu_pret">Pret produs</label>
         <input type="number" class="form-control" id="meniu_pret" name="meniu_pret" value="<?php echo set_value('meniu_pret'); ?>">
     </div>
 
     <div class="col-md-4">
-        <label for="meniu_ingrediente" class="required">Produse</label>
+        <label for="meniu_ingrediente" class="required">Ingrediente</label>
         <select class="form-control"  id="meniu_ingrediente" name="meniu_ingrediente[]" multiple="multiple">  
             <?php
             
@@ -57,7 +54,7 @@ $this->load->view(
     </div>
     
     <div class="form-group col-md-4 ">
-        <label for="meniu_categorie">Categorie meniu</label>
+        <label for="meniu_categorie">Categorie produs</label>
         <select class="form-control" id="meniu_categorie" name="meniu_categorie" >
             <?php    
             foreach ($categorii as $categorie) {

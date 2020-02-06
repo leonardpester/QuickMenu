@@ -55,7 +55,6 @@ class Meniu extends CI_Controller {
     {
          $data = array(
                 'meniu_nume'          =>$this->input->post('meniu_nume'),
-                'meniu_descriere'     =>$this->input->post('meniu_descriere'),
                 'meniu_pret'          =>$this->input->post('meniu_pret'),
                 'meniu_categorie'     =>$this->input->post('meniu_categorie'),
                 'meniu_ingrediente'   =>implode(",",$this->input->post('meniu_ingrediente'))
@@ -74,9 +73,9 @@ class Meniu extends CI_Controller {
 
     public function edit($meniu_id)
     {
-        $categorii=$this->meniu_model->getAllCategory();
-        $meniu=$this->meniu_model->getMenuById($meniu_id);
-        $produse=$this->aplicatie_model->getAllProduct();
+        $categorii = $this->meniu_model->getAllCategory();
+        $meniu = $this->meniu_model->getMenuById($meniu_id);
+        $produse = $this->aplicatie_model->getAllProduct();
         if(!$meniu){
             header('Location: '.$this->config->item('base_url').'admin/list');
             exit();
@@ -92,15 +91,14 @@ class Meniu extends CI_Controller {
     public function editAction()
     {
         $this->form_validation->set_rules('meniu_nume',  'Nume produs', 'required'); 
-        $this->form_validation->set_rules('meniu_descriere',  'Nume produs', 'required'); 
-        $this->form_validation->set_rules('meniu_pret',  'Nume produs', 'required'); 
-        $this->form_validation->set_rules('meniu_categorie',  'Nume produs', 'required');        
+        $this->form_validation->set_rules('meniu_pret',  'Pret produs', 'required'); 
+        $this->form_validation->set_rules('meniu_categorie',  'Categorie produs', 'required');        
         $this->form_validation->set_message('required',  'Campul "{field}" este obligatoriu.');
         $meniu_id = $this->input->post('meniu_id');
        
-        //validate inputs
+        //validare date
         if ($this->form_validation->run() == false) {
-            // Load the edit source view
+            //incarca un produs
             $this->load->view(
             'meniu/edit.php',
             ['meniu' => $this->meniu_model->getProductById($meniu_id), 'post' => 1]
@@ -109,7 +107,6 @@ class Meniu extends CI_Controller {
           
             $data = array(
                 'meniu_nume'          =>$this->input->post('meniu_nume'),
-                'meniu_descriere'     =>$this->input->post('meniu_descriere'),
                 'meniu_pret'          =>$this->input->post('meniu_pret'),
                 'meniu_categorie'     =>$this->input->post('meniu_categorie'),
                 'meniu_ingrediente'   =>implode(",",$this->input->post('meniu_ingrediente')),

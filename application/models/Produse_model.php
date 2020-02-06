@@ -13,6 +13,15 @@ class Produse_model extends APP_Model
     {
         return $this->db->select('*')->from('produse')->where('produs_id', $produs_id)->get()->row();
     }
+    public function getProductByName($produs_nume)
+    {
+        return $this->db->select('produs_cantitate')->from('produse')->where('produs_nume', $produs_nume)->get()->result();
+    }
+    
+    public function updateCantitate( $produs_nume, array $data)
+    {
+        return $this->db->where('produs_nume', $produs_nume)->update('produse', $data);
+    }
     
     public function updateProduct(int $produs_id, array $data)
     {

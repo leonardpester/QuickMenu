@@ -25,18 +25,14 @@ $this->load->view(
 <div class="shadow p-3 mb-2 mt-2 bg-white rounded" style="background-color:white; width: 60%; margin-right: auto;margin-left: auto;height: 100%">
     <div class="page-header">
       <div class="row">
-        <div class="col-md-8">
-            <h1>Comanda cu numarul: <?= $comanda['comanda_id'];?> </h1><br>
+        <div class="col-md-9">
+            <h1>Comanda cu numarul: <?= $comanda['comanda_id'];?> <?= ($comanda['comanda_remove'] == 0 ) ? '' : ' este gata de servire!'  ?></h1><br>
         </div>
 
-        <div class="col-md-4 text-right">
+        <div class="col-md-3 text-right">
           <a href="<?php echo $this->config->item('base_url').'index.php/comenzi/comenzi_primite'; ?>" class='btn btn-danger'><i class="fa fa-arrow-circle-left"></i> Inapoi</a>
         </div>
-        <?php if($comanda['comanda_remove']==0){ ?>
-        <div class="col-md-12 p-1 text-right">
-          <a href="<?php echo $this->config->item('base_url').'index.php/comenzi/comanda_finalizata/'.$comanda['comanda_id']; ?>" class='btn btn-success'><i class="fa fa-check-circle"></i> Finalizare</a>
-        </div>
-        <?php }?>
+      
         <div class="col-md-12 text-left">
           <strong>Masa cu numarul:</strong> <?=$comanda['masa']?>
         </div>
@@ -84,6 +80,27 @@ $this->load->view(
     </div>
 </div>
 
+<?php if($comanda['comanda_remove']==0){ ?>
+  <form id="addForm" method="POST" action="/index.php/comenzi/comanda_finalizata/<?= $comanda['comanda_id']?>" name="myForm " enctype="multipart/form-data" >
+      <input type="hidden" class="formToken" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
+      <div class="row">
+      <div class='col-md-12 text-left'>
+               <p><strong> (* ) Adăugați numărul de grame din fiecare ingredient  pe care le-ati folosit pentru produsele de mai sus. </strong></p>
+            </div>
+        <?php foreach($comanda['comanda_ingrediente']  as $key=>$ingredient){ ?>
+                      <div class="form-group col-md-3">
+                          <label for="ingredient_<?= $key?>"> <?= $ingredient ?></label>
+                          <input type="text" class="form-control" id="ingredient_<?= $key?>" name="ingredient_<?= $key?>" required>
+                      </div>
+            <?php }?>
+            <div class='col-md-12 text-right'>
+                <button type="number" class="btn btn-success" value=""  name="action" id="action_btn" >Finalizare </button>
+            </div>
+
+  
+        </div>
+  </form>
+<?php }?>
 </body>
 </html>
 

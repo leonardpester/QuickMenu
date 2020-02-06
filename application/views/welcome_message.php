@@ -24,13 +24,13 @@ $this->load->view(
 			<div class="row">
 				<div class="col-lg-12">
 					<h4 align="center"> <div class="shadow p-4 rounded  bg-yellow" style=" background-color:#f07049;color:white" align="center" style="margin-right: 25%;margin-left: 25%;">
-					<strong> Bine ati venit, selectati optiunea prin care doriti sa comandati!</strong></div> </h4>
+					<strong> Bine ați venit, selectați opțiunea prin care doriți să comandați!</strong></div> </h4>
 					<br>
 					<small><strong>INFO:</strong></small>
 					<br>
-					<small>Pentru optiunea 'Chelner' in cel mai scurt timp un chelner se va indrepta spre dumneavoastra iar comanda va fi preluata in mod obisnuit.</small>
+					<small>Pentru opțiunea 'Chelner' în cel mai scurt timp un chelner se va îndrepta spre dumneavoastră iar comanda va fi preluată în mod obișnuit.</small>
 					<br>
-					<small>Daca selectati optiunea 'Aplicatie' comanda dumneavoastra va fi preluata in mod electronic fara a necesita venirea unui chelner pentru a va fi solicitata comanda.<small>
+					<small>Dacă selectați opțiunea 'Aplicație' comanda dumneavoastră va fi preluată în mod electronic fără a necesita venirea unui chelner pentru a va fi solicitată comandă.<small>
 					<br><br><br>
 					<p>
 						<a id="chelner" class="btn btn-danger mb-4" style="height:200px;width:250px;"  href='<?php echo $this->config->item('base_url').'index.php/chelner/index/'; ?>'>
@@ -46,7 +46,7 @@ $this->load->view(
 							<i class="fa fa-tablet fa-5x"></i>
 							<br />
 							<br />
-							Aplicatie
+							Aplicație
 							<br />
 						</a>
 					</p>

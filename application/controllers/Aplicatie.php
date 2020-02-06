@@ -25,23 +25,26 @@ class Aplicatie extends APP_Controller
         $cart = $this->input->post('cart');
         $comanda_total_pret = 0;
         $comanda_meniu = [];
-     
+        $comanda_ingrediente = [];
+        
         foreach($cart as $key=>$x){
             $meniu=json_decode($x);
             $comanda_total_pret+=(int)$meniu->meniu_pret;
             $comanda_meniu[$key]=$meniu->meniu_nume;
-           
+            $comanda_ingrediente[$key]=$meniu->meniu_ingrediente;
         }
 
+        $final = implode(",",$comanda_ingrediente);
+        $final = explode(",",$final);
+        $final = array_unique($final);
+       
         $data = [
             'comanda_comanda'       => json_encode($comanda_meniu),
             'comanda_masa'          => $comanda_masa,
-            'comanda_total_pret'    => $comanda_total_pret
+            'comanda_total_pret'    => $comanda_total_pret,
+            'comanda_ingrediente'   => implode(",",$final)
         ];
       
-       
-
-        //if everything ok(order added and other actions) echo 1;
         if($this->aplicatie_model->insertComanda($data)){
             echo 1;
 		    die();
@@ -49,11 +52,11 @@ class Aplicatie extends APP_Controller
 		
 	}
 
-    //get all products
+    //aduc toate meniuri
     public function list()
     {
          $meniuri=$this->aplicatie_model->getAllMenus();
-         //when 0 product
+         //cand nu sunt meniuri
          if(!$meniuri) {
              $meniuri = array();
          }

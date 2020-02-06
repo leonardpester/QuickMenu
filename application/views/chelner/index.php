@@ -25,8 +25,8 @@ $this->load->view(
     <div class="row">
       <div class="col-lg-12">
       <div class="shadow p-1 rounded  bg-yellow" style="background-color:#6da9ff" align="center" style="margin-right: 25%;margin-left: 25%;">
-          <p><strong>Info!</strong> Ati ales optiunea 'Chelner'</p>
-          <p>Un chelner se indreapta spre dumneavoastra !</p>
+          <p><strong>Info!</strong>     Ați ales opțiunea 'Chelner'</p>
+          <p>Un chelner se îndreaptă spre dumneavoastră !</p>
         </div>
         <br>
         <br>
