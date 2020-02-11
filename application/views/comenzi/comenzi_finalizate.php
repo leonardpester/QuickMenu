@@ -29,6 +29,20 @@ $this->load->view(
 
 
   <div class='row'>
+  
+    <div class='col-md-12 text-center'  >
+
+            <?php
+            foreach ($comenzi_chelner as $comanda_chelner) {
+            ?>
+                <a class="btn m-3"  style=" background-color:blue;color:white" href='<?php echo $this->config->item('base_url').'index.php/comenzi/comanda_chelner/'.$comanda_chelner->comanda_id ?>' >Chelner: <?= $comanda_chelner->comanda_id?></a>
+
+            <?php
+            }
+            ?>
+
+
+    </div>
 
   <div class='col-md-12 text-center'  >
 

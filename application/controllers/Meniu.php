@@ -57,12 +57,36 @@ class Meniu extends CI_Controller {
                 'meniu_nume'          =>$this->input->post('meniu_nume'),
                 'meniu_pret'          =>$this->input->post('meniu_pret'),
                 'meniu_categorie'     =>$this->input->post('meniu_categorie'),
-                'meniu_ingrediente'   =>implode(",",$this->input->post('meniu_ingrediente'))
+                'meniu_ingrediente'   =>implode(",",$this->input->post('meniu_ingrediente')),
         );
-        
+
+        $meniu_avatar = explode(".",$_FILES['meniu_avatar']['name'])[1];
+    
         // try to insert menu
         if ($meniu_id = $this->meniu_model->insertMenu($data)) {
         
+            $meniu_avatar = $meniu_id.".".$meniu_avatar;
+            $config['upload_path']   = './files/images';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['file_name']     = $meniu_avatar;
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+                
+         
+            if ( ! $this->upload->do_upload('meniu_avatar'))
+            {
+                header('Location: '.$this->config->item('base_url').'index.php/meniu/addAction');
+            }
+            else
+            { 
+                $dataFile = array('upload_dataFile' => $this->upload->data());
+                $dataAvatar = [
+                    'meniu_avatar' => $meniu_avatar
+                ];
+                $this->meniu_model->updateAvatar($meniu_id,$dataAvatar);
+                
+            }
+
             //if insert ok push success error and redirect to menu list;
             header('Location: '.$this->config->item('base_url').'index.php/meniu/meniu');
         } else {
@@ -88,8 +112,11 @@ class Meniu extends CI_Controller {
           );
     }
 
+    
+
     public function editAction()
     {
+       
         $this->form_validation->set_rules('meniu_nume',  'Nume produs', 'required'); 
         $this->form_validation->set_rules('meniu_pret',  'Pret produs', 'required'); 
         $this->form_validation->set_rules('meniu_categorie',  'Categorie produs', 'required');        
@@ -104,13 +131,40 @@ class Meniu extends CI_Controller {
             ['meniu' => $this->meniu_model->getProductById($meniu_id), 'post' => 1]
           );
         } else {
-          
             $data = array(
-                'meniu_nume'          =>$this->input->post('meniu_nume'),
-                'meniu_pret'          =>$this->input->post('meniu_pret'),
-                'meniu_categorie'     =>$this->input->post('meniu_categorie'),
-                'meniu_ingrediente'   =>implode(",",$this->input->post('meniu_ingrediente')),
+                'meniu_nume'          => $this->input->post('meniu_nume'),
+                'meniu_pret'          => $this->input->post('meniu_pret'),
+                'meniu_categorie'     => $this->input->post('meniu_categorie'),
+                'meniu_ingrediente'   => implode(",",$this->input->post('meniu_ingrediente')),
             );
+
+            $database_avatar = $this->meniu_model->getAvatarById($meniu_id);
+            if($_FILES['meniu_avatar']['name']!=""){
+                $meniu_avatar = explode(".",$_FILES['meniu_avatar']['name'])[1];
+                $meniu_avatar = $meniu_id.".".$meniu_avatar;
+                $config['upload_path']   = './files/images';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['file_name']     = $meniu_avatar;
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+
+                if($database_avatar!= NULL){
+                    $myFile = "./files/images/".$database_avatar;
+                    if(file_exists($myFile)){
+                        unlink($myFile) or die("Couldn't delete file");
+                    }
+                }
+
+                if ( ! $this->upload->do_upload('meniu_avatar'))
+                {
+                    header('Location: '.$this->config->item('base_url').'index.php/meniu/addAction');
+                }
+                else
+                { 
+                    $dataFile = array('upload_dataFile' => $this->upload->data());
+                    $data['meniu_avatar'] = $meniu_avatar;
+                }    
+            }
             
             // try to update source
             if ($this->meniu_model->updateMenu($meniu_id, $data)) {
@@ -124,8 +178,16 @@ class Meniu extends CI_Controller {
     //delete menu
     public function delete($meniu_id)
     {
+        $meniu_avatar = $this->meniu_model->getAvatarById($meniu_id);
         if ($this->meniu_model->deleteMenu($meniu_id)) {
-               header('Location: '.$this->config->item('base_url').'index.php/meniu/meniu');;
+            if($meniu_avatar!= NULL) {
+                $myFile = "./files/images/".$meniu_avatar;
+                if(file_exists($myFile)){
+                    unlink($myFile) or die("Couldn't delete file");
+                }
+            }
+
+            header('Location: '.$this->config->item('base_url').'index.php/meniu/meniu');;
         } else {
             echo 'Fail';
         }

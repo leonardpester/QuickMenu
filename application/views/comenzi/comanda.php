@@ -30,7 +30,7 @@ $this->load->view(
         </div>
 
         <div class="col-md-3 text-right">
-          <a href="<?php echo $this->config->item('base_url').'index.php/comenzi/comenzi_primite'; ?>" class='btn btn-danger'><i class="fa fa-arrow-circle-left"></i> Inapoi</a>
+          <a href="<?php echo $this->config->item('base_url').'index.php/comenzi/comenzi_primite'; ?>" class='btn btn-danger'><i class="fa fa-arrow-circle-left"></i> Înapoi</a>
         </div>
       
         <div class="col-md-12 text-left">
@@ -85,7 +85,7 @@ $this->load->view(
       <input type="hidden" class="formToken" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
       <div class="row">
       <div class='col-md-12 text-left'>
-               <p><strong> (* ) Adăugați numărul de grame din fiecare ingredient  pe care le-ati folosit pentru produsele de mai sus. </strong></p>
+               <p><strong> (* ) Adăugați numărul de grame aferent ingredientelor pe care le-ati folosit pentru produsele de mai sus. </strong></p>
             </div>
         <?php foreach($comanda['comanda_ingrediente']  as $key=>$ingredient){ ?>
                       <div class="form-group col-md-3">

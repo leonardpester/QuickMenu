@@ -51,7 +51,7 @@ class Produse extends CI_Controller {
         
             //if insert ok push success error and redirect to sources list;
          
-            header('Location: '.$this->config->item('base_url').'index.php/admin/list');
+            header('Location: '.$this->config->item('base_url').'index.php/produse/stoc');
         } else {
             //if insert error push danger error and redirect to sources list;
             header('Location: '.$this->config->item('base_url').'index.php/produse/adaugaProdus');

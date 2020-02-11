@@ -73,7 +73,7 @@ $this->load->view(
   
     <div class='col-md-12'>
         <button type="number" class="btn btn-success" value=""  name="action" id="action_btn" >Adauga meniu </button>
-        <a href="<?php echo $this->config->item('base_url').'index.php/admin/list'; ?>" class='btn btn-danger'>Renunta</a>
+        <a href="<?php echo $this->config->item('base_url').'index.php/meniu/meniu'; ?>" class='btn btn-danger'>Renunta</a>
     </div>
 
 </div>

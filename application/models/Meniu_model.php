@@ -24,6 +24,11 @@ class Meniu_model extends APP_Model
         return $this->db->where('meniu_id', $meniu_id)->update('meniuri', $data);
     }
 
+    public function updateAvatar(int $meniu_id, array $data)
+    {
+        return $this->db->where('meniu_id', $meniu_id)->update('meniuri', $data);
+    }
+
     public function insertMenu(array $data)
     {
         return $this->db->insert('meniuri', $data) ? $this->db->insert_id() : false;
@@ -63,4 +68,16 @@ class Meniu_model extends APP_Model
             ->result();
         return $var;
     }
+
+
+        
+    public function getAvatarById($meniu_id){
+        $var = $this->db
+           ->select('meniu_avatar')
+           ->from('meniuri')
+           ->where('meniu_id',$meniu_id)
+           ->get()
+           ->row();
+       return $var->meniu_avatar;
+   }
 }

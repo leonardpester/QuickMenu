@@ -75,7 +75,7 @@ $this->load->view(
 
     <div class='col-md-12'>
         <button type="submit" class="btn btn-success" value=""  name="action" id="action_btn" >Editeaza meniu</button>
-        <a href="<?php echo $this->config->item('base_url').'index.php/admin/list'; ?>" class='btn btn-danger'>Renunta</a>
+        <a href="<?php echo $this->config->item('base_url').'index.php/meniu/meniu'; ?>" class='btn btn-danger'>Renunta</a>
     </div>
 
 </div>

@@ -18,12 +18,14 @@ class Comenzi extends CI_Controller {
 
 	public function comenzi_finalizate(){
 		$comenzi=$this->comenzi_model->getAllComenziRemove1();
+		$comenzi_chelner=$this->comenzi_model->getAllComenziRemove2();
 		//when 0 comenzi
 		if(!$comenzi) {
 			$comenzi = array();
 		}
 		$this->load->view('comenzi/comenzi_finalizate',[
-			'comenzi' => $comenzi
+			'comenzi' => $comenzi,
+			'comenzi_chelner' => $comenzi_chelner
 		]);
 	}
 
@@ -36,6 +38,13 @@ class Comenzi extends CI_Controller {
 		$this->load->view('comenzi/comenzi_primite',[
 							'comenzi' => $comenzi
 						]);
+	}
+
+	public function comanda_chelner($comanda_id){
+		$comanda = $this->comenzi_model->getComandaById($comanda_id);
+		$this->load->view('comenzi/comanda_chelner',[
+			'comanda_chelner' => $comanda
+		]);
 	}
 
 	public function comenzi($comanda_id){
@@ -66,28 +75,31 @@ class Comenzi extends CI_Controller {
 	public function comanda_finalizata($comanda_id){
 		$comanda = $this->comenzi_model->getComandaById($comanda_id);
 		$i = count(explode(",",$comanda->comanda_ingrediente));
+		
 		for($key=0;$key <$i ;$key++){
 			$grame[$key] = $this->input->post("ingredient_".$key);
 		}
 
-
 		foreach(explode(",",$comanda->comanda_ingrediente) as $key=>$ing){
-			//selectez din ingrediente cantitate
 			$grame_din_ingrediente = $this->produse_model->getProductByName($ing);
 			$grame_pentru_update = (int)$grame_din_ingrediente[0]->produs_cantitate - (int)$grame[$key];
-		
-			$produse_cantitate= [
-				'produs_cantitate' => (int)$grame_pentru_update
-			];
+			$produse_cantitate= ['produs_cantitate' => (int)$grame_pentru_update];
 			$update_cantitate = $this->produse_model->updateCantitate($ing,$produse_cantitate);
-		
-
 		}
+
 		$data = [
 			'comanda_id'	 => $comanda_id,
 			'comanda_remove' => 1	
 		];
 		$this->comenzi_model->changeComandaRemove1($data,$comanda_id);
 		header('Location: '.$this->config->item('base_url').'index.php/comenzi/comenzi_primite');
+	}
+
+	public function confirma_cererea($comanda_id){
+		$data=[
+			'comanda_remove' => 99
+		];
+		$this->comenzi_model->changeComandaRemove99($data,$comanda_id);
+		header('Location: '.$this->config->item('base_url').'index.php/comenzi/comenzi_finalizate');
 	}
 }

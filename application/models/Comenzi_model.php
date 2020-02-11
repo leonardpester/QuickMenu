@@ -50,14 +50,28 @@ class Comenzi_model extends APP_Model
             ->select('*')
             ->from('comenzi')
             ->where('comanda_remove',1)
-
             ->order_by('comanda_id', 'ASC');
+        return $var->get()->result();
+    }
 
+    public function getAllComenziRemove2()
+    {
+        $var = $this->db
+            ->select('*')
+            ->from('comenzi')
+            ->where('comanda_remove',2)
+            ->order_by('comanda_id', 'ASC');
         return $var->get()->result();
     }
     public function changeComandaRemove1($data,$comanda_id){
         return $this->db->where('comanda_id', $comanda_id)->update('comenzi', $data);
     }
+
+    public function changeComandaRemove99($data,$comanda_id){
+        return $this->db->where('comanda_id', $comanda_id)->update('comenzi', $data);
+    }
+
+
     public function getProductByMenu($meniu_id){
          $var = $this->db
             ->select('meniu_ingrediente')
